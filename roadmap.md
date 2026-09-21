@@ -14,3 +14,7 @@
 - [x] Replace repeated page headers with distinct, mobile-appropriate imagery
 - [x] Animate the global country network and verify all revised pages on desktop and mobile
 - [x] Refine page colours, awards, committees, ETO, supporter years, adjudication timing, and privacy copy
+- [x] Bring About content and statistics onto the blue homepage while retaining the About page
+- [x] Add official ETO flags, exact dates, posterboard samples, and local-organizer guidance
+- [x] Expand STEAM and SHAPE benefits, application steps, and enquiry-session links
+- [x] Keep the Add to Google Calendar control visible before interaction
