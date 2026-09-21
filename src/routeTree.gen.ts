@@ -10,33 +10,375 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as DonateRouteImport } from './routes/donate'
+import { Route as EtoRouteImport } from './routes/eto'
+import { Route as JournalRouteImport } from './routes/journal'
+import { Route as MediaRouteImport } from './routes/media'
+import { Route as NewsRouteImport } from './routes/news'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as SponsorRouteImport } from './routes/sponsor'
+import { Route as CompeteIndexRouteImport } from './routes/compete/index'
+import { Route as CompeteAccoladesRouteImport } from './routes/compete/accolades'
+import { Route as CompeteAdjudicationRouteImport } from './routes/compete/adjudication'
+import { Route as CompeteQualifierRouteImport } from './routes/compete/qualifier'
+import { Route as CompeteRegistrationRouteImport } from './routes/compete/registration'
+import { Route as CompeteSubmissionRouteImport } from './routes/compete/submission'
+import { Route as CompeteTeamsRouteImport } from './routes/compete/teams'
+import { Route as CompeteTimelineRouteImport } from './routes/compete/timeline'
+import { Route as ConnectIndexRouteImport } from './routes/connect/index'
+import { Route as ConnectAlumniRouteImport } from './routes/connect/alumni'
+import { Route as ConnectCollabRouteImport } from './routes/connect/collab'
+import { Route as ConnectCommitteesRouteImport } from './routes/connect/committees'
+import { Route as ConnectJudgeRouteImport } from './routes/connect/judge'
+import { Route as ConnectLessonsRouteImport } from './routes/connect/lessons'
+import { Route as SupportIndexRouteImport } from './routes/support/index'
+import { Route as SupportContributingRouteImport } from './routes/support/contributing'
+import { Route as SupportOrganizationRouteImport } from './routes/support/organization'
+import { Route as SupportSchoolRouteImport } from './routes/support/school'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DonateRoute = DonateRouteImport.update({
+  id: '/donate',
+  path: '/donate',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EtoRoute = EtoRouteImport.update({
+  id: '/eto',
+  path: '/eto',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const JournalRoute = JournalRouteImport.update({
+  id: '/journal',
+  path: '/journal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MediaRoute = MediaRouteImport.update({
+  id: '/media',
+  path: '/media',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NewsRoute = NewsRouteImport.update({
+  id: '/news',
+  path: '/news',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SponsorRoute = SponsorRouteImport.update({
+  id: '/sponsor',
+  path: '/sponsor',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CompeteIndexRoute = CompeteIndexRouteImport.update({
+  id: '/compete/',
+  path: '/compete/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CompeteAccoladesRoute = CompeteAccoladesRouteImport.update({
+  id: '/compete/accolades',
+  path: '/compete/accolades',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CompeteAdjudicationRoute = CompeteAdjudicationRouteImport.update({
+  id: '/compete/adjudication',
+  path: '/compete/adjudication',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CompeteQualifierRoute = CompeteQualifierRouteImport.update({
+  id: '/compete/qualifier',
+  path: '/compete/qualifier',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CompeteRegistrationRoute = CompeteRegistrationRouteImport.update({
+  id: '/compete/registration',
+  path: '/compete/registration',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CompeteSubmissionRoute = CompeteSubmissionRouteImport.update({
+  id: '/compete/submission',
+  path: '/compete/submission',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CompeteTeamsRoute = CompeteTeamsRouteImport.update({
+  id: '/compete/teams',
+  path: '/compete/teams',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CompeteTimelineRoute = CompeteTimelineRouteImport.update({
+  id: '/compete/timeline',
+  path: '/compete/timeline',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConnectIndexRoute = ConnectIndexRouteImport.update({
+  id: '/connect/',
+  path: '/connect/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConnectAlumniRoute = ConnectAlumniRouteImport.update({
+  id: '/connect/alumni',
+  path: '/connect/alumni',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConnectCollabRoute = ConnectCollabRouteImport.update({
+  id: '/connect/collab',
+  path: '/connect/collab',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConnectCommitteesRoute = ConnectCommitteesRouteImport.update({
+  id: '/connect/committees',
+  path: '/connect/committees',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConnectJudgeRoute = ConnectJudgeRouteImport.update({
+  id: '/connect/judge',
+  path: '/connect/judge',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConnectLessonsRoute = ConnectLessonsRouteImport.update({
+  id: '/connect/lessons',
+  path: '/connect/lessons',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SupportIndexRoute = SupportIndexRouteImport.update({
+  id: '/support/',
+  path: '/support/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SupportContributingRoute = SupportContributingRouteImport.update({
+  id: '/support/contributing',
+  path: '/support/contributing',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SupportOrganizationRoute = SupportOrganizationRouteImport.update({
+  id: '/support/organization',
+  path: '/support/organization',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SupportSchoolRoute = SupportSchoolRouteImport.update({
+  id: '/support/school',
+  path: '/support/school',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/donate': typeof DonateRoute
+  '/eto': typeof EtoRoute
+  '/journal': typeof JournalRoute
+  '/media': typeof MediaRoute
+  '/news': typeof NewsRoute
+  '/privacy': typeof PrivacyRoute
+  '/sponsor': typeof SponsorRoute
+  '/compete/accolades': typeof CompeteAccoladesRoute
+  '/compete/adjudication': typeof CompeteAdjudicationRoute
+  '/compete/qualifier': typeof CompeteQualifierRoute
+  '/compete/registration': typeof CompeteRegistrationRoute
+  '/compete/submission': typeof CompeteSubmissionRoute
+  '/compete/teams': typeof CompeteTeamsRoute
+  '/compete/timeline': typeof CompeteTimelineRoute
+  '/connect/alumni': typeof ConnectAlumniRoute
+  '/connect/collab': typeof ConnectCollabRoute
+  '/connect/committees': typeof ConnectCommitteesRoute
+  '/connect/judge': typeof ConnectJudgeRoute
+  '/connect/lessons': typeof ConnectLessonsRoute
+  '/support/contributing': typeof SupportContributingRoute
+  '/support/organization': typeof SupportOrganizationRoute
+  '/support/school': typeof SupportSchoolRoute
+  '/compete/': typeof CompeteIndexRoute
+  '/connect/': typeof ConnectIndexRoute
+  '/support/': typeof SupportIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/donate': typeof DonateRoute
+  '/eto': typeof EtoRoute
+  '/journal': typeof JournalRoute
+  '/media': typeof MediaRoute
+  '/news': typeof NewsRoute
+  '/privacy': typeof PrivacyRoute
+  '/sponsor': typeof SponsorRoute
+  '/compete/accolades': typeof CompeteAccoladesRoute
+  '/compete/adjudication': typeof CompeteAdjudicationRoute
+  '/compete/qualifier': typeof CompeteQualifierRoute
+  '/compete/registration': typeof CompeteRegistrationRoute
+  '/compete/submission': typeof CompeteSubmissionRoute
+  '/compete/teams': typeof CompeteTeamsRoute
+  '/compete/timeline': typeof CompeteTimelineRoute
+  '/connect/alumni': typeof ConnectAlumniRoute
+  '/connect/collab': typeof ConnectCollabRoute
+  '/connect/committees': typeof ConnectCommitteesRoute
+  '/connect/judge': typeof ConnectJudgeRoute
+  '/connect/lessons': typeof ConnectLessonsRoute
+  '/support/contributing': typeof SupportContributingRoute
+  '/support/organization': typeof SupportOrganizationRoute
+  '/support/school': typeof SupportSchoolRoute
+  '/compete': typeof CompeteIndexRoute
+  '/connect': typeof ConnectIndexRoute
+  '/support': typeof SupportIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
+  '/donate': typeof DonateRoute
+  '/eto': typeof EtoRoute
+  '/journal': typeof JournalRoute
+  '/media': typeof MediaRoute
+  '/news': typeof NewsRoute
+  '/privacy': typeof PrivacyRoute
+  '/sponsor': typeof SponsorRoute
+  '/compete/accolades': typeof CompeteAccoladesRoute
+  '/compete/adjudication': typeof CompeteAdjudicationRoute
+  '/compete/qualifier': typeof CompeteQualifierRoute
+  '/compete/registration': typeof CompeteRegistrationRoute
+  '/compete/submission': typeof CompeteSubmissionRoute
+  '/compete/teams': typeof CompeteTeamsRoute
+  '/compete/timeline': typeof CompeteTimelineRoute
+  '/connect/alumni': typeof ConnectAlumniRoute
+  '/connect/collab': typeof ConnectCollabRoute
+  '/connect/committees': typeof ConnectCommitteesRoute
+  '/connect/judge': typeof ConnectJudgeRoute
+  '/connect/lessons': typeof ConnectLessonsRoute
+  '/support/contributing': typeof SupportContributingRoute
+  '/support/organization': typeof SupportOrganizationRoute
+  '/support/school': typeof SupportSchoolRoute
+  '/compete/': typeof CompeteIndexRoute
+  '/connect/': typeof ConnectIndexRoute
+  '/support/': typeof SupportIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/about'
+    | '/donate'
+    | '/eto'
+    | '/journal'
+    | '/media'
+    | '/news'
+    | '/privacy'
+    | '/sponsor'
+    | '/compete/accolades'
+    | '/compete/adjudication'
+    | '/compete/qualifier'
+    | '/compete/registration'
+    | '/compete/submission'
+    | '/compete/teams'
+    | '/compete/timeline'
+    | '/connect/alumni'
+    | '/connect/collab'
+    | '/connect/committees'
+    | '/connect/judge'
+    | '/connect/lessons'
+    | '/support/contributing'
+    | '/support/organization'
+    | '/support/school'
+    | '/compete/'
+    | '/connect/'
+    | '/support/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/about'
+    | '/donate'
+    | '/eto'
+    | '/journal'
+    | '/media'
+    | '/news'
+    | '/privacy'
+    | '/sponsor'
+    | '/compete/accolades'
+    | '/compete/adjudication'
+    | '/compete/qualifier'
+    | '/compete/registration'
+    | '/compete/submission'
+    | '/compete/teams'
+    | '/compete/timeline'
+    | '/connect/alumni'
+    | '/connect/collab'
+    | '/connect/committees'
+    | '/connect/judge'
+    | '/connect/lessons'
+    | '/support/contributing'
+    | '/support/organization'
+    | '/support/school'
+    | '/compete'
+    | '/connect'
+    | '/support'
+  id:
+    | '__root__'
+    | '/'
+    | '/about'
+    | '/donate'
+    | '/eto'
+    | '/journal'
+    | '/media'
+    | '/news'
+    | '/privacy'
+    | '/sponsor'
+    | '/compete/accolades'
+    | '/compete/adjudication'
+    | '/compete/qualifier'
+    | '/compete/registration'
+    | '/compete/submission'
+    | '/compete/teams'
+    | '/compete/timeline'
+    | '/connect/alumni'
+    | '/connect/collab'
+    | '/connect/committees'
+    | '/connect/judge'
+    | '/connect/lessons'
+    | '/support/contributing'
+    | '/support/organization'
+    | '/support/school'
+    | '/compete/'
+    | '/connect/'
+    | '/support/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
+  DonateRoute: typeof DonateRoute
+  EtoRoute: typeof EtoRoute
+  JournalRoute: typeof JournalRoute
+  MediaRoute: typeof MediaRoute
+  NewsRoute: typeof NewsRoute
+  PrivacyRoute: typeof PrivacyRoute
+  SponsorRoute: typeof SponsorRoute
+  CompeteAccoladesRoute: typeof CompeteAccoladesRoute
+  CompeteAdjudicationRoute: typeof CompeteAdjudicationRoute
+  CompeteQualifierRoute: typeof CompeteQualifierRoute
+  CompeteRegistrationRoute: typeof CompeteRegistrationRoute
+  CompeteSubmissionRoute: typeof CompeteSubmissionRoute
+  CompeteTeamsRoute: typeof CompeteTeamsRoute
+  CompeteTimelineRoute: typeof CompeteTimelineRoute
+  ConnectAlumniRoute: typeof ConnectAlumniRoute
+  ConnectCollabRoute: typeof ConnectCollabRoute
+  ConnectCommitteesRoute: typeof ConnectCommitteesRoute
+  ConnectJudgeRoute: typeof ConnectJudgeRoute
+  ConnectLessonsRoute: typeof ConnectLessonsRoute
+  SupportContributingRoute: typeof SupportContributingRoute
+  SupportOrganizationRoute: typeof SupportOrganizationRoute
+  SupportSchoolRoute: typeof SupportSchoolRoute
+  CompeteIndexRoute: typeof CompeteIndexRoute
+  ConnectIndexRoute: typeof ConnectIndexRoute
+  SupportIndexRoute: typeof SupportIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +390,219 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/donate': {
+      id: '/donate'
+      path: '/donate'
+      fullPath: '/donate'
+      preLoaderRoute: typeof DonateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/eto': {
+      id: '/eto'
+      path: '/eto'
+      fullPath: '/eto'
+      preLoaderRoute: typeof EtoRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/journal': {
+      id: '/journal'
+      path: '/journal'
+      fullPath: '/journal'
+      preLoaderRoute: typeof JournalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/media': {
+      id: '/media'
+      path: '/media'
+      fullPath: '/media'
+      preLoaderRoute: typeof MediaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/news': {
+      id: '/news'
+      path: '/news'
+      fullPath: '/news'
+      preLoaderRoute: typeof NewsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sponsor': {
+      id: '/sponsor'
+      path: '/sponsor'
+      fullPath: '/sponsor'
+      preLoaderRoute: typeof SponsorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/compete/': {
+      id: '/compete/'
+      path: '/compete'
+      fullPath: '/compete/'
+      preLoaderRoute: typeof CompeteIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/compete/accolades': {
+      id: '/compete/accolades'
+      path: '/compete/accolades'
+      fullPath: '/compete/accolades'
+      preLoaderRoute: typeof CompeteAccoladesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/compete/adjudication': {
+      id: '/compete/adjudication'
+      path: '/compete/adjudication'
+      fullPath: '/compete/adjudication'
+      preLoaderRoute: typeof CompeteAdjudicationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/compete/qualifier': {
+      id: '/compete/qualifier'
+      path: '/compete/qualifier'
+      fullPath: '/compete/qualifier'
+      preLoaderRoute: typeof CompeteQualifierRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/compete/registration': {
+      id: '/compete/registration'
+      path: '/compete/registration'
+      fullPath: '/compete/registration'
+      preLoaderRoute: typeof CompeteRegistrationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/compete/submission': {
+      id: '/compete/submission'
+      path: '/compete/submission'
+      fullPath: '/compete/submission'
+      preLoaderRoute: typeof CompeteSubmissionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/compete/teams': {
+      id: '/compete/teams'
+      path: '/compete/teams'
+      fullPath: '/compete/teams'
+      preLoaderRoute: typeof CompeteTeamsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/compete/timeline': {
+      id: '/compete/timeline'
+      path: '/compete/timeline'
+      fullPath: '/compete/timeline'
+      preLoaderRoute: typeof CompeteTimelineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/connect/': {
+      id: '/connect/'
+      path: '/connect'
+      fullPath: '/connect/'
+      preLoaderRoute: typeof ConnectIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/connect/alumni': {
+      id: '/connect/alumni'
+      path: '/connect/alumni'
+      fullPath: '/connect/alumni'
+      preLoaderRoute: typeof ConnectAlumniRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/connect/collab': {
+      id: '/connect/collab'
+      path: '/connect/collab'
+      fullPath: '/connect/collab'
+      preLoaderRoute: typeof ConnectCollabRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/connect/committees': {
+      id: '/connect/committees'
+      path: '/connect/committees'
+      fullPath: '/connect/committees'
+      preLoaderRoute: typeof ConnectCommitteesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/connect/judge': {
+      id: '/connect/judge'
+      path: '/connect/judge'
+      fullPath: '/connect/judge'
+      preLoaderRoute: typeof ConnectJudgeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/connect/lessons': {
+      id: '/connect/lessons'
+      path: '/connect/lessons'
+      fullPath: '/connect/lessons'
+      preLoaderRoute: typeof ConnectLessonsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/support/': {
+      id: '/support/'
+      path: '/support'
+      fullPath: '/support/'
+      preLoaderRoute: typeof SupportIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/support/contributing': {
+      id: '/support/contributing'
+      path: '/support/contributing'
+      fullPath: '/support/contributing'
+      preLoaderRoute: typeof SupportContributingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/support/organization': {
+      id: '/support/organization'
+      path: '/support/organization'
+      fullPath: '/support/organization'
+      preLoaderRoute: typeof SupportOrganizationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/support/school': {
+      id: '/support/school'
+      path: '/support/school'
+      fullPath: '/support/school'
+      preLoaderRoute: typeof SupportSchoolRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
+  DonateRoute: DonateRoute,
+  EtoRoute: EtoRoute,
+  JournalRoute: JournalRoute,
+  MediaRoute: MediaRoute,
+  NewsRoute: NewsRoute,
+  PrivacyRoute: PrivacyRoute,
+  SponsorRoute: SponsorRoute,
+  CompeteAccoladesRoute: CompeteAccoladesRoute,
+  CompeteAdjudicationRoute: CompeteAdjudicationRoute,
+  CompeteQualifierRoute: CompeteQualifierRoute,
+  CompeteRegistrationRoute: CompeteRegistrationRoute,
+  CompeteSubmissionRoute: CompeteSubmissionRoute,
+  CompeteTeamsRoute: CompeteTeamsRoute,
+  CompeteTimelineRoute: CompeteTimelineRoute,
+  ConnectAlumniRoute: ConnectAlumniRoute,
+  ConnectCollabRoute: ConnectCollabRoute,
+  ConnectCommitteesRoute: ConnectCommitteesRoute,
+  ConnectJudgeRoute: ConnectJudgeRoute,
+  ConnectLessonsRoute: ConnectLessonsRoute,
+  SupportContributingRoute: SupportContributingRoute,
+  SupportOrganizationRoute: SupportOrganizationRoute,
+  SupportSchoolRoute: SupportSchoolRoute,
+  CompeteIndexRoute: CompeteIndexRoute,
+  ConnectIndexRoute: ConnectIndexRoute,
+  SupportIndexRoute: SupportIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
