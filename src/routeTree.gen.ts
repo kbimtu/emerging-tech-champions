@@ -32,6 +32,8 @@ import { Route as ConnectCollabRouteImport } from './routes/connect/collab'
 import { Route as ConnectCommitteesRouteImport } from './routes/connect/committees'
 import { Route as ConnectJudgeRouteImport } from './routes/connect/judge'
 import { Route as ConnectLessonsRouteImport } from './routes/connect/lessons'
+import { Route as ConnectShapeRouteImport } from './routes/connect/shape'
+import { Route as ConnectSteamRouteImport } from './routes/connect/steam'
 import { Route as SupportIndexRouteImport } from './routes/support/index'
 import { Route as SupportContributingRouteImport } from './routes/support/contributing'
 import { Route as SupportOrganizationRouteImport } from './routes/support/organization'
@@ -152,6 +154,16 @@ const ConnectLessonsRoute = ConnectLessonsRouteImport.update({
   path: '/connect/lessons',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ConnectShapeRoute = ConnectShapeRouteImport.update({
+  id: '/connect/shape',
+  path: '/connect/shape',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConnectSteamRoute = ConnectSteamRouteImport.update({
+  id: '/connect/steam',
+  path: '/connect/steam',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SupportIndexRoute = SupportIndexRouteImport.update({
   id: '/support/',
   path: '/support/',
@@ -195,6 +207,8 @@ export interface FileRoutesByFullPath {
   '/connect/committees': typeof ConnectCommitteesRoute
   '/connect/judge': typeof ConnectJudgeRoute
   '/connect/lessons': typeof ConnectLessonsRoute
+  '/connect/shape': typeof ConnectShapeRoute
+  '/connect/steam': typeof ConnectSteamRoute
   '/support/contributing': typeof SupportContributingRoute
   '/support/organization': typeof SupportOrganizationRoute
   '/support/school': typeof SupportSchoolRoute
@@ -224,6 +238,8 @@ export interface FileRoutesByTo {
   '/connect/committees': typeof ConnectCommitteesRoute
   '/connect/judge': typeof ConnectJudgeRoute
   '/connect/lessons': typeof ConnectLessonsRoute
+  '/connect/shape': typeof ConnectShapeRoute
+  '/connect/steam': typeof ConnectSteamRoute
   '/support/contributing': typeof SupportContributingRoute
   '/support/organization': typeof SupportOrganizationRoute
   '/support/school': typeof SupportSchoolRoute
@@ -254,6 +270,8 @@ export interface FileRoutesById {
   '/connect/committees': typeof ConnectCommitteesRoute
   '/connect/judge': typeof ConnectJudgeRoute
   '/connect/lessons': typeof ConnectLessonsRoute
+  '/connect/shape': typeof ConnectShapeRoute
+  '/connect/steam': typeof ConnectSteamRoute
   '/support/contributing': typeof SupportContributingRoute
   '/support/organization': typeof SupportOrganizationRoute
   '/support/school': typeof SupportSchoolRoute
@@ -285,6 +303,8 @@ export interface FileRouteTypes {
     | '/connect/committees'
     | '/connect/judge'
     | '/connect/lessons'
+    | '/connect/shape'
+    | '/connect/steam'
     | '/support/contributing'
     | '/support/organization'
     | '/support/school'
@@ -314,6 +334,8 @@ export interface FileRouteTypes {
     | '/connect/committees'
     | '/connect/judge'
     | '/connect/lessons'
+    | '/connect/shape'
+    | '/connect/steam'
     | '/support/contributing'
     | '/support/organization'
     | '/support/school'
@@ -343,6 +365,8 @@ export interface FileRouteTypes {
     | '/connect/committees'
     | '/connect/judge'
     | '/connect/lessons'
+    | '/connect/shape'
+    | '/connect/steam'
     | '/support/contributing'
     | '/support/organization'
     | '/support/school'
@@ -373,6 +397,8 @@ export interface RootRouteChildren {
   ConnectCommitteesRoute: typeof ConnectCommitteesRoute
   ConnectJudgeRoute: typeof ConnectJudgeRoute
   ConnectLessonsRoute: typeof ConnectLessonsRoute
+  ConnectShapeRoute: typeof ConnectShapeRoute
+  ConnectSteamRoute: typeof ConnectSteamRoute
   SupportContributingRoute: typeof SupportContributingRoute
   SupportOrganizationRoute: typeof SupportOrganizationRoute
   SupportSchoolRoute: typeof SupportSchoolRoute
@@ -544,6 +570,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ConnectLessonsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/connect/shape': {
+      id: '/connect/shape'
+      path: '/connect/shape'
+      fullPath: '/connect/shape'
+      preLoaderRoute: typeof ConnectShapeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/connect/steam': {
+      id: '/connect/steam'
+      path: '/connect/steam'
+      fullPath: '/connect/steam'
+      preLoaderRoute: typeof ConnectSteamRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/support/': {
       id: '/support/'
       path: '/support'
@@ -597,6 +637,8 @@ const rootRouteChildren: RootRouteChildren = {
   ConnectCommitteesRoute: ConnectCommitteesRoute,
   ConnectJudgeRoute: ConnectJudgeRoute,
   ConnectLessonsRoute: ConnectLessonsRoute,
+  ConnectShapeRoute: ConnectShapeRoute,
+  ConnectSteamRoute: ConnectSteamRoute,
   SupportContributingRoute: SupportContributingRoute,
   SupportOrganizationRoute: SupportOrganizationRoute,
   SupportSchoolRoute: SupportSchoolRoute,
