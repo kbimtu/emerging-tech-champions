@@ -12,4 +12,4 @@
 - [x] Add STEAM and SHAPE committee pages with updated committee application flow
 - [x] Integrate supplied competition and affiliation logos with gentle animated showcases
 - [x] Replace repeated page headers with distinct, mobile-appropriate imagery
-- [ ] Animate the global country network and verify all revised pages on desktop and mobile
+- [x] Animate the global country network and verify all revised pages on desktop and mobile
