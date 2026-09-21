@@ -40,7 +40,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-[1440px] items-center justify-between px-5 lg:px-8">
         <Link to="/" className="group flex items-baseline gap-2" aria-label="i2OL home">
-          <span className="font-display text-3xl font-black tracking-normal">i²OL</span>
+          <span className="font-display text-3xl font-black tracking-normal">i2OL</span>
           <span className="hidden text-[10px] font-bold uppercase text-muted-foreground sm:block">2026 season</span>
         </Link>
         <nav className="hidden h-full items-center gap-1 lg:flex" aria-label="Primary navigation">
@@ -60,7 +60,7 @@ export function SiteHeader() {
           <Sheet>
             <SheetTrigger asChild><Button variant="outline" size="icon" className="lg:hidden" aria-label="Open menu"><Menu /></Button></SheetTrigger>
             <SheetContent className="w-[90vw] max-w-sm overflow-y-auto">
-              <SheetTitle className="font-display text-2xl">i²OL</SheetTitle>
+              <SheetTitle className="font-display text-2xl">i2OL</SheetTitle>
               <SheetDescription>International Olympiad in Emerging Technologies</SheetDescription>
               <nav className="mt-8 space-y-6">
                 {groups.map((group) => <div key={group.label}>
@@ -80,7 +80,7 @@ export function SiteHeader() {
 export function SiteFooter() {
   return <footer className="border-t border-border bg-foreground text-background">
     <div className="mx-auto grid max-w-[1440px] gap-10 px-5 py-12 md:grid-cols-[2fr_1fr_1fr] lg:px-8">
-      <div><div className="font-display text-5xl font-black">i²OL</div><p className="mt-3 max-w-md text-sm text-background/65">Practical problem-solving competitions for sustainable, responsible, evidence-based innovation.</p></div>
+      <div><div className="font-display text-5xl font-black">i2OL</div><p className="mt-3 max-w-md text-sm text-background/65">Practical problem-solving competitions for sustainable, responsible, evidence-based innovation.</p></div>
       <div><p className="footer-label">Contact</p><a href="mailto:info@i2ol.org">info@i2ol.org</a><a href="mailto:dpo@kb.institute">DPO · dpo@kb.institute</a><a href="/privacy">Privacy policy</a></div>
       <div><p className="footer-label">Network</p><a href="https://kb.institute">KB Institute</a><a href="https://nl.kb.institute">Netherlands</a><a href="https://hk.kb.institute">Hong Kong</a><a href="https://2026.idsol.org">IDSOL</a><a href="https://2026.ibcol.org">IBCOL</a><a href="https://2026.iqcol.org">IQCOL</a></div>
     </div>
