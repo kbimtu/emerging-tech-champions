@@ -170,6 +170,14 @@ a { transition: color .2s ease, background-color .2s ease, transform .2s ease; }
 footer a { display:block; margin:.4rem 0; font-size:.85rem; }
 .page-hero,.home-hero { position:relative; overflow:hidden; border-bottom:1px solid var(--border); background:var(--background); }
 .page-hero { min-height:420px; display:flex; align-items:center; color:var(--background); background:var(--foreground); }
+.page-hero.is-color { min-height:360px; }
+.page-hero.tone-default { background:linear-gradient(120deg,var(--foreground),color-mix(in oklch,var(--foreground) 84%,var(--cyan))); }
+.page-hero.tone-steam { background:linear-gradient(120deg,oklch(.24 .08 198),oklch(.48 .13 168)); }
+.page-hero.tone-shape { background:linear-gradient(120deg,oklch(.31 .10 25),oklch(.65 .16 68)); }
+.page-hero.tone-adjudication { background:linear-gradient(120deg,oklch(.27 .12 24),oklch(.58 .22 27)); }
+.page-hero.tone-kbi { background:linear-gradient(120deg,oklch(.24 .13 275),oklch(.47 .17 265)); }
+.page-hero.tone-media { background:linear-gradient(120deg,oklch(.35 .12 45),oklch(.69 .19 56)); }
+.page-hero.tone-exhibition { background:linear-gradient(120deg,oklch(.25 .10 240),oklch(.55 .16 220)); }
 .page-hero-image { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; }
 .page-hero-shade { position:absolute; inset:0; background:linear-gradient(90deg,color-mix(in oklch,var(--foreground) 96%,transparent) 0%,color-mix(in oklch,var(--foreground) 78%,transparent) 48%,color-mix(in oklch,var(--foreground) 12%,transparent) 100%); }
 .bridge-grid { position:absolute; inset:0; opacity:.45; background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px); background-size:48px 48px; mask-image:linear-gradient(to bottom,black,transparent 90%); }
@@ -186,9 +194,14 @@ footer a { display:block; margin:.4rem 0; font-size:.85rem; }
 .competition-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:1rem; }
 .competition-card { position:relative; overflow:hidden; min-height:420px; padding:1.5rem; border-radius:16px; color:oklch(0.99 0.005 90); }
 .competition-card:hover { transform:translateY(-5px); }
-.competition-card h3 { margin-top:7rem; font-family:var(--font-display); font-size:clamp(1.8rem,3vw,3rem); font-weight:800; line-height:1; }
+.competition-card h3 { margin-top:1.25rem; font-family:var(--font-display); font-size:clamp(1.8rem,3vw,3rem); font-weight:800; line-height:1; }
 .competition-card p { margin-top:1rem; max-width:25rem; font-size:.9rem; opacity:.7; }
-.competition-logo { width:clamp(110px,45%,180px); height:56px; object-fit:contain; object-position:left center; }
+.competition-logo { width:clamp(170px,62%,260px); height:92px; object-fit:contain; object-position:left center; }
+.competition-season { margin-top:1.25rem; font-family:var(--font-display); font-size:1.1rem; }
+.hero-competition-logos { display:flex; flex-wrap:wrap; gap:1rem 2rem; margin-top:2rem; }
+.hero-competition-logos div { display:flex; align-items:center; gap:.65rem; }
+.hero-competition-logos img { width:110px; height:48px; object-fit:contain; object-position:left center; }
+.hero-competition-logos span { font-size:.78rem; font-weight:800; }
 .comp-id { background:linear-gradient(145deg,oklch(0.27 .13 276),oklch(.62 .16 211)); }
 .comp-iq { background:linear-gradient(145deg,oklch(.22 .12 307),oklch(.52 .23 315)); }
 .comp-ib { background:linear-gradient(145deg,oklch(.2 .03 235),oklch(.48 .13 174)); }
@@ -220,6 +233,8 @@ footer a { display:block; margin:.4rem 0; font-size:.85rem; }
 .stats-row { display:grid; grid-template-columns:repeat(3,1fr); margin-top:3rem; border-block:1px solid var(--border); }.stat { padding:2rem 0; }.stat strong { display:block; font-family:var(--font-display); font-size:3rem; }.stat span { color:var(--muted-foreground); font-size:.8rem; }.country-list,.prose-lead { max-width:1000px; font-size:clamp(1.2rem,2.5vw,2rem); line-height:1.55; }
 .country-marquee { overflow:hidden; border-block:1px solid color-mix(in oklch,var(--background) 20%,transparent); padding:1.5rem 0; }
 .country-marquee p { display:inline-block; min-width:max-content; padding-right:4rem; color:color-mix(in oklch,var(--background) 78%,transparent); font-family:var(--font-display); font-size:clamp(1.15rem,2vw,1.7rem); line-height:1.55; animation:country-flow 55s linear infinite; }
+.country-pop { display:flex; flex-wrap:wrap; gap:.65rem; }
+.country-pop span { padding:.65rem .8rem; border:1px solid color-mix(in oklch,var(--background) 24%,transparent); color:color-mix(in oklch,var(--background) 80%,transparent); font-size:.78rem; animation:country-pop 4s ease-in-out infinite; }
 .definition { padding:1.5rem; border:1px solid var(--border); }.tip { display:flex; gap:.75rem; align-items:center; padding:.8rem 5vw; background:var(--lime); font-size:.85rem; }.tip svg{flex:none}.deadline-list { border-top:1px solid var(--border); }.deadline-list div { display:grid; grid-template-columns:minmax(140px,1fr) 3fr; gap:1rem; border-bottom:1px solid var(--border); padding:1.25rem 0; }.deadline-list strong{color:var(--signal)}
 .criteria { display:grid; gap:1.25rem; margin:2rem 0; }.meter { height:8px; margin-top:.5rem; background:var(--muted); }.meter span { display:block; height:100%; background:var(--signal); }.tab-list { width:100%; height:auto; display:grid; grid-template-columns:repeat(3,1fr); border:1px solid var(--border); padding:0; background:transparent; }.tab-list button { min-height:52px; border-radius:0; }.tab-panel { padding:2rem 0; max-width:900px; }.tab-panel h3 { font-family:var(--font-display); font-size:2rem; font-weight:800; }.tab-panel p { margin-top:1rem; line-height:1.7; color:var(--muted-foreground); }
 .phase-strip { display:flex; align-items:center; gap:2rem; }.phase-strip div { display:flex; align-items:center; gap:1rem; }.phase-strip b { font-size:3rem; color:var(--signal); }.phase-strip span { font-size:.85rem; }
@@ -236,15 +251,15 @@ footer a { display:block; margin:.4rem 0; font-size:.85rem; }
 .game { padding:clamp(1rem,5vw,4rem); border:1px solid var(--border); text-align:center; }.game-chain { display:flex; justify-content:center; align-items:center; margin-bottom:2rem; }.game-chain>div { display:flex; align-items:center; }.game-chain button { display:flex; flex-direction:column; gap:.4rem; align-items:center; color:var(--muted-foreground); font-size:.7rem; font-weight:800; }.game-chain button:not(:disabled){color:var(--signal);animation:pulse 1.2s infinite}.game-chain .active button{color:var(--primary)}.game-chain i{width:clamp(15px,6vw,90px);height:2px;background:var(--border)}.game-chain .active i{background:var(--primary)}.game p{margin-bottom:1.5rem;color:var(--muted-foreground)}
 .award,.event { border:1px solid var(--border); padding:2rem; }.award.major { background:var(--lime); }.award.impact { background:var(--accent); }.award h3,.event h3 { margin-top:3rem; font-family:var(--font-display); font-size:2rem; font-weight:800; }.award p,.event p { margin:1rem 0; color:var(--muted-foreground); }
 .award-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:2rem; }
-.competition-awards { display:grid; gap:2rem; }
-.competition-award { overflow:hidden; border:1px solid color-mix(in oklch,var(--background) 24%,transparent); border-radius:var(--radius); padding:2rem; }
-.competition-award-head { display:grid; grid-template-columns:180px minmax(0,1fr); align-items:center; gap:2rem; padding-bottom:1.5rem; border-bottom:1px solid color-mix(in oklch,var(--background) 24%,transparent); }
-.competition-award-head img { width:160px; height:70px; object-fit:contain; object-position:left center; }
+.competition-awards { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:2rem; }
+.competition-award { min-width:0; overflow:hidden; border:1px solid color-mix(in oklch,var(--background) 32%,transparent); padding:1.5rem; }
+.competition-award-head { display:block; min-height:190px; padding-bottom:1.5rem; border-bottom:1px solid color-mix(in oklch,var(--background) 24%,transparent); }
+.competition-award-head img { width:min(100%,230px); height:100px; object-fit:contain; object-position:left center; }
 .competition-award-head span,.award-stream h4 { color:var(--cyan); font-size:.72rem; font-weight:800; text-transform:uppercase; }
 .competition-award-head h3 { margin-top:.4rem; font-family:var(--font-display); font-size:1.6rem; font-weight:800; }
-.award-stream { display:grid; grid-template-columns:180px minmax(0,1fr); gap:2rem; padding-top:1.5rem; }
-.award-track { display:grid; grid-template-columns:100px minmax(0,1fr); gap:1rem; padding-bottom:1rem; }
-.award-track div { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:.5rem; }
+.award-stream { display:block; padding-top:1.5rem; }
+.award-track { display:block; padding-top:1rem; }
+.award-track div { display:grid; grid-template-columns:1fr; gap:.45rem; margin-top:.6rem; }
 .award-track span { padding:.65rem; border:1px solid color-mix(in oklch,var(--background) 18%,transparent); font-size:.72rem; }
 .committee-paths { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1rem; margin-top:2.5rem; }
 .committee-paths a { display:grid; min-height:220px; grid-template-columns:minmax(0,1fr) auto; align-content:start; padding:1.5rem; border:1px solid var(--border); }
@@ -253,9 +268,14 @@ footer a { display:block; margin:.4rem 0; font-size:.85rem; }
 .logo-marquee>div { display:flex; width:max-content; animation:logo-flow 60s linear infinite; }
 .logo-marquee>div.reverse { animation-direction:reverse; animation-duration:70s; }
 .logo-marquee img { width:auto; height:110px; max-width:none; }
+.supporter-years { margin-top:2.5rem; font-family:var(--font-display); font-size:1.25rem; font-weight:800; }
+.event-flag { display:block; font-size:2.4rem; line-height:1; }
+.adjudicator-commitment { display:grid; grid-template-columns:1fr 2fr; gap:2rem; margin-top:2.5rem; padding:1.5rem; border-left:5px solid var(--signal); background:color-mix(in oklch,var(--signal) 9%,var(--background)); }
+.adjudicator-commitment strong { font-family:var(--font-display); font-size:1.2rem; }
 .link-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1rem; }.link-grid>a { display:block; min-height:260px; padding:1.5rem; border:1px solid var(--border); }.link-grid>a:hover{background:var(--accent);transform:translateY(-3px)}.link-grid h3{margin-top:3rem;font-family:var(--font-display);font-size:1.6rem;font-weight:800}.link-grid p{margin:1rem 0;color:var(--muted-foreground);font-size:.9rem;line-height:1.6}.legal-copy{max-width:900px}.legal-copy p{margin-bottom:1.25rem;line-height:1.8;color:var(--muted-foreground)}.legal-copy a{text-decoration:underline;color:var(--foreground)}
 @keyframes pulse { 50% { transform:scale(1.15); } }
 @keyframes country-flow { to { transform:translateX(-50%); } }
+@keyframes country-pop { 0%,70%,100% { transform:translateY(0); background:transparent; } 35% { transform:translateY(-7px); background:color-mix(in oklch,var(--cyan) 18%,transparent); color:var(--background); } }
 @keyframes logo-flow { to { transform:translateX(-50%); } }
 @media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
-@media(max-width:767px){.section,.section-dark{padding:3.75rem 1.25rem}.page-hero{min-height:390px}.page-hero-image{object-position:64% center}.page-hero-shade{background:linear-gradient(90deg,color-mix(in oklch,var(--foreground) 94%,transparent),color-mix(in oklch,var(--foreground) 62%,transparent))}.page-title{font-size:clamp(2.7rem,14vw,4.2rem)}.competition-grid,.category-picker-grid,.info-grid,.stats-row,.link-grid,.award-grid{grid-template-columns:1fr}.competition-card{min-height:340px}.competition-card h3{margin-top:5rem}.info-item{min-height:auto;border-right:0}.supervisor-note{grid-template-columns:1fr;gap:.5rem}.phase-strip{align-items:flex-start;flex-direction:column}.phase-strip>svg{transform:rotate(90deg)}.timeline article,.timeline-entry,.deadline-list div{grid-template-columns:1fr;gap:.4rem}.timeline-link-icon{position:absolute;right:1.25rem}.global-network{grid-template-columns:1fr;gap:2rem}.global-orbit{width:180px;margin:auto}.country-cloud{justify-content:center}.tab-list{grid-template-columns:1fr}.game-chain i{width:10px}.game-chain button span{font-size:.55rem}.home-hero{min-height:calc(100svh - 4rem)}.bridge-grid:after{width:90vw;height:90vw;right:-35vw;top:10vw}.competition-award{padding:1.25rem}.competition-award-head,.award-stream,.award-track{grid-template-columns:1fr;gap:.75rem}.award-track div{grid-template-columns:1fr}.committee-paths{grid-template-columns:1fr}.logo-marquee img{height:88px}}
+@media(max-width:767px){.section,.section-dark{padding:3.75rem 1.25rem}.page-hero,.page-hero.is-color{min-height:340px}.page-hero-image{object-position:64% center}.page-hero-shade{background:linear-gradient(90deg,color-mix(in oklch,var(--foreground) 94%,transparent),color-mix(in oklch,var(--foreground) 62%,transparent))}.page-hero.is-color .page-hero-shade{background:linear-gradient(90deg,color-mix(in oklch,var(--foreground) 28%,transparent),transparent)}.page-title{font-size:clamp(2.7rem,14vw,4.2rem)}.competition-grid,.category-picker-grid,.info-grid,.stats-row,.link-grid,.award-grid,.competition-awards{grid-template-columns:1fr}.competition-card{min-height:360px}.competition-card h3{margin-top:1.25rem}.hero-competition-logos{gap:.75rem}.hero-competition-logos div{width:100%}.hero-competition-logos img{width:90px;height:38px}.info-item{min-height:auto;border-right:0}.supervisor-note,.adjudicator-commitment{grid-template-columns:1fr;gap:.5rem}.phase-strip{align-items:flex-start;flex-direction:column}.phase-strip>svg{transform:rotate(90deg)}.timeline article,.timeline-entry,.deadline-list div{grid-template-columns:1fr;gap:.4rem}.timeline-link-icon{position:absolute;right:1.25rem}.global-network{grid-template-columns:1fr;gap:2rem}.global-orbit{width:180px;margin:auto}.country-cloud{justify-content:center}.tab-list{grid-template-columns:1fr}.game-chain i{width:10px}.game-chain button span{font-size:.55rem}.home-hero{min-height:calc(100svh - 4rem)}.bridge-grid:after{width:90vw;height:90vw;right:-35vw;top:10vw}.competition-award{padding:1.25rem}.competition-award-head{min-height:auto}.committee-paths{grid-template-columns:1fr}.logo-marquee img{height:88px}}
