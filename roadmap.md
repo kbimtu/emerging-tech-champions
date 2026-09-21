@@ -13,3 +13,4 @@
 - [x] Integrate supplied competition and affiliation logos with gentle animated showcases
 - [x] Replace repeated page headers with distinct, mobile-appropriate imagery
 - [x] Animate the global country network and verify all revised pages on desktop and mobile
+- [x] Refine page colours, awards, committees, ETO, supporter years, adjudication timing, and privacy copy
