@@ -18,3 +18,6 @@
 - [x] Add official ETO flags, exact dates, posterboard samples, and local-organizer guidance
 - [x] Expand STEAM and SHAPE benefits, application steps, and enquiry-session links
 - [x] Keep the Add to Google Calendar control visible before interaction
+- [x] Move the full About block to the bottom of the homepage and remove the umbrella chain line
+- [x] Update the footer copyright wording
+- [x] Add a public News blog with a private draft-and-publish editor
