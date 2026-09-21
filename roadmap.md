@@ -6,4 +6,4 @@
 - [x] Build ETO, Connect, Media, Journal, Support, Donate, Sponsor, Privacy pages
 - [x] Add route-specific metadata and working links
 - [x] Remove all IQCOL physical competition dates
-- [ ] Verify build and mobile/desktop interactions
+- [x] Verify build and mobile/desktop interactions
