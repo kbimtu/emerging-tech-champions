@@ -7,4 +7,4 @@
 - [x] Add route-specific metadata and working links
 - [x] Remove all IQCOL physical competition dates
 - [x] Verify build and mobile/desktop interactions
-- [ ] Refine competition category choices, eligibility, linked dates, and qualifier global network
+- [x] Refine competition category choices, eligibility, linked dates, and qualifier global network
