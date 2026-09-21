@@ -2,12 +2,6 @@ import { useMemo, useState } from "react";
 import { ArrowRight, ArrowUpRight, CalendarPlus, Check, CircleDot, ExternalLink, Globe2, Link as LinkIcon, Mail, RotateCcw, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import heroGlobal from "@/assets/hero-global-network.jpg";
-import heroQuantum from "@/assets/hero-quantum.jpg";
-import heroData from "@/assets/hero-data.jpg";
-import heroBlockchain from "@/assets/hero-blockchain.jpg";
-import heroAdjudication from "@/assets/hero-adjudication.jpg";
-import heroAwards from "@/assets/hero-awards.jpg";
 import heroCommunity from "@/assets/hero-community.jpg";
 import heroEto from "@/assets/hero-eto.jpg";
 import heroSupport from "@/assets/hero-support.jpg";
@@ -26,21 +20,20 @@ const competitions = [
   { key: "IBCOL", title: "International Blockchain Olympiad", detail: "Web3 & decentralized solutions", href: "https://2026.ibcol.org", className: "comp-ib", field: "BCTT", definition: "Blockchain & Trust Technologies", logo: ibcolLogoWhite.url, whiteLogo: ibcolLogoWhite.url, categories: [["ARC", "Solution architecture"], ["DEV", "Solution development"]] as const },
 ];
 
-const heroImages: Record<string, string> = {
-  "About i2OL": heroGlobal, Compete: heroData, Registration: heroCommunity, Submission: heroData,
-  Adjudication: heroAdjudication, "Key dates": heroGlobal, "Teams · 2026": heroCommunity,
-  Accolades: heroAwards, Qualifier: heroGlobal, "Optional side event": heroEto, Connect: heroCommunity,
-  "Lessons learned": heroBlockchain, News: heroData, Committees: heroCommunity, STEAM: heroData,
-  SHAPE: heroGlobal, Collab: heroCommunity, Alumni: heroGlobal, Adjudicator: heroAdjudication,
-  Media: heroData, Journal: heroQuantum, Support: heroSupport, "Supporting school": heroSupport,
-  "Supporting organization": heroCommunity, "Regional committees": heroGlobal, Donate: heroSupport,
-  Sponsorship: heroEto, Legal: heroBlockchain,
+const heroImages: Partial<Record<string, string>> = {
+  Committees: heroCommunity, "Optional side event": heroEto, "Supporting school": heroSupport,
+  "Supporting organization": heroCommunity, "Regional committees": heroSupport,
+};
+
+const heroTones: Record<string, string> = {
+  STEAM: "tone-steam", SHAPE: "tone-shape", Adjudication: "tone-adjudication", Adjudicator: "tone-adjudication",
+  Media: "tone-media", "Lessons learned": "tone-exhibition", Accolades: "tone-exhibition", "About i2OL": "tone-kbi", Legal: "tone-kbi",
 };
 
 const Section = ({ eyebrow, title, children, dark = false }: { eyebrow?: string; title: string; children: React.ReactNode; dark?: boolean }) => <section className={dark ? "section-dark" : "section"}><div className="section-inner">{eyebrow && <p className="eyebrow">{eyebrow}</p>}<h2 className="section-title">{title}</h2>{children}</div></section>;
-const Hero = ({ label, title, text, children }: { label: string; title: string; text: string; children?: React.ReactNode }) => <section className="page-hero"><img className="page-hero-image" src={heroImages[label] ?? heroGlobal} alt="" width={1600} height={700}/><div className="page-hero-shade" aria-hidden="true"/><div className="relative mx-auto max-w-[1440px] px-5 py-14 md:py-20 lg:px-8"><p className="eyebrow">{label}</p><h1 className="page-title">{title}</h1><p className="mt-5 max-w-2xl text-lg leading-8 text-background/80 md:text-xl">{text}</p>{children}</div></section>;
+const Hero = ({ label, title, text, children, logos = false }: { label: string; title: string; text: string; children?: React.ReactNode; logos?: boolean }) => { const image=heroImages[label]; return <section className={`page-hero ${image ? "has-image" : "is-color"} ${heroTones[label] ?? "tone-default"}`}>{image&&<img className="page-hero-image" src={image} alt="" width={1600} height={700}/>}<div className="page-hero-shade" aria-hidden="true"/><div className="relative mx-auto w-full max-w-[1440px] px-5 py-14 md:py-20 lg:px-8"><p className="eyebrow">{label}</p><h1 className="page-title">{title}</h1><p className="mt-5 max-w-2xl text-lg leading-8 text-background/80 md:text-xl">{text}</p>{logos&&<div className="hero-competition-logos" aria-label="i2OL competitions"><div><img src={idsolLogoWhite.url} alt="iDSOL logo"/><span>iDSOL 2026</span></div><div><img src={ibcolLogoWhite.url} alt="iBCOL logo"/><span>iBCOL 2026</span></div><div><img src={iqcolLogoWhite.url} alt="iQCOL logo"/><span>iQCOL 2026</span></div></div>}{children}</div></section>};
 const Actions = ({ secondary = true }: { secondary?: boolean }) => <div className="mt-8 flex flex-wrap gap-3"><Button asChild size="lg"><a href={JOIN}>Submit your project now <ArrowUpRight /></a></Button>{secondary && <Button asChild size="lg" variant="outline"><a href="/compete">Explore competitions <ArrowRight /></a></Button>}</div>;
-const Cards = () => <div className="competition-grid">{competitions.map((c) => <a href={c.href} target="_blank" rel="noreferrer" className={`competition-card ${c.className}`} key={c.key}><div className="network-lines"/><div className="relative flex h-full flex-col"><img className="competition-logo" src={c.whiteLogo} alt={`${c.key} logo`} loading="lazy"/><h3>{c.title}</h3><p>{c.detail}</p><span className="mt-auto inline-flex items-center gap-2 text-sm font-bold">Visit competition <ArrowUpRight className="size-4" /></span></div></a>)}</div>;
+const Cards = () => <div className="competition-grid">{competitions.map((c) => <a href={c.href} target="_blank" rel="noreferrer" className={`competition-card ${c.className}`} key={c.key}><div className="network-lines"/><div className="relative flex h-full flex-col"><img className="competition-logo" src={c.whiteLogo} alt={`${c.key} logo`} loading="lazy"/><strong className="competition-season">{c.key === "IDSOL" ? "iDSOL" : c.key === "IBCOL" ? "iBCOL" : "iQCOL"} 2026</strong><h3>{c.title}</h3><p>{c.detail}</p><span className="mt-auto inline-flex items-center gap-2 text-sm font-bold">Visit competition <ArrowUpRight className="size-4" /></span></div></a>)}</div>;
 const CategoryChoices = ({ competition }: { competition: (typeof competitions)[number] }) => {
   const [selected, setSelected] = useState<string>(competition.categories[0][0]);
   return <article className={`category-picker ${competition.className}`}><span className="field-code">{competition.field}</span><h3>{competition.definition}</h3><div className="category-options" role="group" aria-label={`${competition.key} category`}>{competition.categories.map(([code, description]) => <Button type="button" variant="outline" className={selected === code ? "is-selected" : ""} aria-pressed={selected === code} onClick={() => setSelected(code)} key={code}><span><strong>{code}</strong><small>{description}</small></span><Check className="category-check" aria-hidden="true"/></Button>)}</div></article>;
