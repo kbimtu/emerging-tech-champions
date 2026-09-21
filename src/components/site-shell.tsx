@@ -25,11 +25,11 @@ const groups = [
   { label: "ETO", href: "/eto" },
   {
     label: "Connect", href: "/connect",
-    items: [["Lessons learned", "/connect/lessons"], ["News", "/news"], ["Committees", "/connect/committees"], ["Collab", "/connect/collab"], ["Alumni", "/connect/alumni"], ["Adjudicator", "/connect/judge"]],
+    items: [["Lessons learned", "/connect/lessons"], ["News", "/news"], ["Committees", "/connect/committees"], ["STEAM", "/connect/steam"], ["SHAPE", "/connect/shape"], ["Collab", "/connect/collab"], ["Alumni", "/connect/alumni"], ["Adjudicator", "/connect/judge"]],
   },
   {
     label: "Support", href: "/support",
-    items: [["Supporting school", "/support/school"], ["Supporting organization", "/support/organization"], ["Host a regional", "/support/contributing"], ["Donate", "/donate"], ["Sponsor", "/sponsor"]],
+    items: [["Supporting schools", "/support/school"], ["Supporting organizations", "/support/organization"], ["Regional committees", "/support/contributing"], ["Donation", "/donate"], ["Sponsorship", "/sponsor"]],
   },
   { label: "Media", href: "/media" },
   { label: "Journal", href: "/journal" },
@@ -84,6 +84,6 @@ export function SiteFooter() {
       <div><p className="footer-label">Contact</p><a href="mailto:info@i2ol.org">info@i2ol.org</a><a href="mailto:dpo@kb.institute">DPO · dpo@kb.institute</a><a href="/privacy">Privacy policy</a></div>
       <div><p className="footer-label">Network</p><a href="https://kb.institute">KB Institute</a><a href="https://nl.kb.institute">Netherlands</a><a href="https://hk.kb.institute">Hong Kong</a><a href="https://2026.idsol.org">IDSOL</a><a href="https://2026.ibcol.org">IBCOL</a><a href="https://2026.iqcol.org">IQCOL</a></div>
     </div>
-    <div className="border-t border-background/15 px-5 py-4 text-center text-xs text-background/50">© 2026 Kingsbridge Institute Limited · Ninth anniversary season</div>
+    <div className="border-t border-background/15 px-5 py-4 text-center text-xs text-background/50">© 2026 Königsberger Brückeninstitut Mittetulundusühing · Ninth anniversary season</div>
   </footer>;
 }

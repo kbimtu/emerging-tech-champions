@@ -8,8 +8,8 @@
 - [x] Remove all IQCOL physical competition dates
 - [x] Verify build and mobile/desktop interactions
 - [x] Refine competition category choices, eligibility, linked dates, and qualifier global network
-- [ ] Update About, adjudication, accolades, committees, ETO, support pages, and footer content
-- [ ] Add STEAM and SHAPE committee pages with updated committee application flow
-- [ ] Integrate supplied competition and affiliation logos with gentle animated showcases
-- [ ] Replace repeated page headers with distinct, mobile-appropriate imagery
-- [ ] Animate the global country network and verify all revised pages on desktop and mobile
+- [x] Update About, adjudication, accolades, committees, ETO, support pages, and footer content
+- [x] Add STEAM and SHAPE committee pages with updated committee application flow
+- [x] Integrate supplied competition and affiliation logos with gentle animated showcases
+- [x] Replace repeated page headers with distinct, mobile-appropriate imagery
+- [x] Animate the global country network and verify all revised pages on desktop and mobile
