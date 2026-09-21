@@ -84,6 +84,6 @@ export function SiteFooter() {
       <div><p className="footer-label">Contact</p><a href="mailto:info@i2ol.org">info@i2ol.org</a><a href="mailto:dpo@kb.institute">DPO · dpo@kb.institute</a><a href="/privacy">Privacy policy</a></div>
       <div><p className="footer-label">Network</p><a href="https://kb.institute">KB Institute</a><a href="https://nl.kb.institute">Netherlands</a><a href="https://hk.kb.institute">Hong Kong</a><a href="https://2026.idsol.org">IDSOL</a><a href="https://2026.ibcol.org">IBCOL</a><a href="https://2026.iqcol.org">IQCOL</a></div>
     </div>
-    <div className="border-t border-background/15 px-5 py-4 text-center text-xs text-background/50">© 2026 Königsberger Brückeninstitut Mittetulundusühing · Ninth anniversary season</div>
+    <div className="border-t border-background/15 px-5 py-4 text-center text-xs text-background/50">© 2026 Königsberger Brückeninstitut Mittetulundusühing (KB Institute). All rights reserved</div>
   </footer>;
 }
