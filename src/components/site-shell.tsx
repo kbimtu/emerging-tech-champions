@@ -81,9 +81,9 @@ export function SiteFooter() {
   return <footer className="border-t border-border bg-foreground text-background">
     <div className="mx-auto grid max-w-[1440px] gap-10 px-5 py-12 md:grid-cols-[2fr_1fr_1fr] lg:px-8">
       <div><div className="font-display text-5xl font-black">i2OL</div><p className="mt-3 max-w-md text-sm text-background/65">Practical problem-solving competitions for sustainable, responsible, evidence-based innovation.</p></div>
-      <div><p className="footer-label">Contact</p><a href="mailto:info@i2ol.org">info@i2ol.org</a><a href="mailto:dpo@kb.institute">DPO · dpo@kb.institute</a><a href="/privacy">Privacy policy</a></div>
-      <div><p className="footer-label">Network</p><a href="https://kb.institute">KB Institute</a><a href="https://nl.kb.institute">Netherlands</a><a href="https://hk.kb.institute">Hong Kong</a><a href="https://2026.idsol.org">IDSOL</a><a href="https://2026.ibcol.org">IBCOL</a><a href="https://2026.iqcol.org">IQCOL</a></div>
+      <div><p className="footer-label">Contact</p><a href="mailto:info@i2ol.org">General Enquiries</a><a href="mailto:dpo@kb.institute">Data Protection Officer</a><a href="/privacy">Privacy Policy</a></div>
+      <div><p className="footer-label">Network</p><a href="https://kb.institute">KB Institute</a><a href="https://nl.kb.institute">KBI Netherlands</a><a href="https://hk.kb.institute">KBI Hong Kong</a><a href="https://2026.idsol.org">IDSOL 2026</a><a href="https://2026.ibcol.org">IBCOL 2026</a><a href="https://2026.iqcol.org">IQCOL 2026</a></div>
     </div>
-    <div className="border-t border-background/15 px-5 py-4 text-center text-xs text-background/50">© 2026 Königsberger Brückeninstitut Mittetulundusühing (KB Institute). All rights reserved</div>
+    <div className="border-t border-background/15 px-5 py-4 text-center text-xs text-background/50">© 2026 Königsberger Brückeninstitut Mittetulundusühing (KB Institute). All rights reserved.</div>
   </footer>;
 }
