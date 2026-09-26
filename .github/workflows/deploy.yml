@@ -3,7 +3,7 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main # Triggers whenever Lovable syncs an AI change or you push code
+      - main
 
 permissions:
   contents: read
@@ -24,17 +24,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Node
-        uses: actions/setup-node@v4
+      # 1. Install Bun (which Lovable uses natively)
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
         with:
-          node-version: 20
-          cache: 'npm'
+          bun-version: latest
 
+      # 2. Install dependencies using Bun
       - name: Install dependencies
-        run: npm ci # Uses npm i if npm ci fails
+        run: bun install
 
+      # 3. Build the Vite production bundle
       - name: Build project
-        run: npm run build
+        run: bun run build
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -42,7 +44,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist' # Vite builds output to the dist folder
+          path: './dist'
 
       - name: Deploy to GitHub Pages
         id: deployment
