@@ -20,38 +20,35 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-        env:
-        ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true # Overrides Node runtime restrictions
-
     steps:
-      # Upgraded to @v4 (Node 24 native)
       - name: Checkout
         uses: actions/checkout@v4
 
-      # Setup Bun environment natively
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
 
-      # Clean setup and application packaging
+      # Using clean native environment flags to ignore Node 20 deprecation errors
       - name: Install dependencies
         run: bun install
+        env:
+          ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
 
       - name: Build project
         run: bun run build
+        env:
+          ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true
 
-      # Upgraded to @v5 (Node 24 native)
+      # All official deployment tools upgraded to modern versions
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
-      # Upgraded to @v3 (Node 24 native)
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: './dist'
 
-      # Upgraded to @v4 (Node 24 native)
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
