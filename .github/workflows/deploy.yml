@@ -21,33 +21,34 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
+      # Upgraded to @v4 (Node 24 native)
       - name: Checkout
         uses: actions/checkout@v4
 
-      # 1. Install Bun (which Lovable uses natively)
+      # Setup Bun environment natively
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
 
-      # 2. Install dependencies using Bun
+      # Clean setup and application packaging
       - name: Install dependencies
         run: bun install
 
-      # 3. Build the Vite production bundle
       - name: Build project
         run: bun run build
 
-      # 4. Upgraded to v5 to natively support Node 24
+      # Upgraded to @v5 (Node 24 native)
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
+      # Upgraded to @v3 (Node 24 native)
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: './dist'
 
-      # 5. Upgraded to v4/v5 variants that don't depend on deprecated Node runtimes
+      # Upgraded to @v4 (Node 24 native)
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
