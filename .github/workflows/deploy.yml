@@ -20,6 +20,9 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+        env:
+        ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION: true # Overrides Node runtime restrictions
+
     steps:
       # Upgraded to @v4 (Node 24 native)
       - name: Checkout
