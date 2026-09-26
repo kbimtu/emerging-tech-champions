@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
 export const Route = createFileRoute("/auth")({
-  validateSearch: (search: Record<string, unknown>) => ({ next: typeof search.next === "string" && search.next.startsWith("/") ? search.next : "/news/editor" }),
+  validateSearch: (search: Record<string, unknown>) => ({ next: typeof search["next"] === "string" && search["next"].startsWith("/") ? search["next"] : "/news/editor" }),
   head: () => ({ meta: [{ title: "News Editor Sign In | i2OL" },{ name:"description",content:"Private sign-in for the i2OL News editor."},{property:"og:title",content:"News Editor Sign In | i2OL"},{property:"og:description",content:"Private sign-in for the i2OL News editor."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}] }),
   component: AuthPage,
 });
