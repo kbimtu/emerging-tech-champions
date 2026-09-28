@@ -1,13 +1,15 @@
 import { createServerFn } from "@tanstack/react-start";
+import { createClient } from "@supabase/supabase-js";
 import { z } from "zod";
+import type { Database } from "@/integrations/supabase/types";
 
 const pageTypeSchema = z.enum(["school", "organization", "committee", "sponsor"]);
 
 export const getPublicDirectory = createServerFn({ method: "GET" })
   .inputValidator((data) => z.object({ pageType: pageTypeSchema }).parse(data))
   .handler(async ({ data }) => {
-    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-    const { data: tiers, error } = await supabaseAdmin
+    const supabasePublic = createClient<Database>(process.env['SUPABASE_URL']!, process.env['SUPABASE_PUBLISHABLE_KEY']!, { auth: { storage: undefined, persistSession: false, autoRefreshToken: false } });
+    const { data: tiers, error } = await supabasePublic
       .from("directory_tiers")
       .select("id,page_type,title,subtitle,sort_order,directory_entries(id,name,website_url,logo_path,sort_order)")
       .eq("page_type", data.pageType)
@@ -19,7 +21,7 @@ export const getPublicDirectory = createServerFn({ method: "GET" })
     return Promise.all((tiers ?? []).map(async (tier) => ({
       ...tier,
       directory_entries: await Promise.all((tier.directory_entries ?? []).map(async (entry) => {
-        const { data: signed } = await supabaseAdmin.storage.from("directory-logos").createSignedUrl(entry.logo_path, 3600);
+        const { data: signed } = await supabasePublic.storage.from("directory-logos").createSignedUrl(entry.logo_path, 3600);
         return { ...entry, logo_url: signed?.signedUrl ?? "" };
       })),
     })));
