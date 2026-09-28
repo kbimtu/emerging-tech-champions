@@ -28,4 +28,4 @@
 - [x] Disable account creation; requested weak password remains blocked by password safety checks
 - [x] Add tiered directories for schools, organizations, committees, and sponsors
 - [x] Add logo, name, link, tier, ordering, and publishing controls to the editor
-- [ ] Verify public directory pages and authenticated editor flow
+- [x] Verify public directory pages and authenticated editor flow
