@@ -32,3 +32,11 @@
 - [x] Remove editor password recovery route and confirm account creation remains disabled
 - [x] Set the fixed editor account password securely
 - [x] Remove excess homepage banner space beneath the action buttons
+
+- [ ] Move adjudicator commitment and application timing from Adjudication to Adjudicator
+- [ ] Add article image upload and public article image display
+- [ ] Add editable people directories with photo, name, sector, and square/circle framing for STEAM, SHAPE, and Adjudicator
+- [ ] Add Organizing Committee under Sponsorships with editor-managed people
+- [ ] Separate sponsorship options and add nonprofit support acknowledgement
+- [ ] Change Donation to Coming Soon
+- [ ] Verify updated public pages and authenticated editor flows
