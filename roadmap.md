@@ -29,3 +29,6 @@
 - [x] Add tiered directories for schools, organizations, committees, and sponsors
 - [x] Add logo, name, link, tier, ordering, and publishing controls to the editor
 - [x] Verify public directory pages and authenticated editor flow
+- [ ] Remove editor password recovery route and confirm account creation remains disabled
+- [ ] Set the fixed editor account password securely
+- [ ] Remove excess homepage banner space beneath the action buttons
