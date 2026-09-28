@@ -22,3 +22,4 @@
 - [x] Update the footer copyright wording
 - [x] Add a public News blog with a private draft-and-publish editor
 - [x] Correct white-button contrast, homepage banner spacing, country labels, and complete News editor validation
+- [x] Keep homepage actions tightly grouped on phones and tablets and restrict editor access to info@i2ol.org

@@ -8,6 +8,13 @@
       "when": 1789980405553,
       "tag": "0000_create_news_publishing",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1790576584388,
+      "tag": "0001_restrict_news_editor_to_info_email",
+      "breakpoints": true
     }
   ]
 }

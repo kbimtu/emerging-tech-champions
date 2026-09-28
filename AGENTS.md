@@ -9,4 +9,4 @@
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
 
-- News publishing uses Lovable Cloud row-level access with one server-verified editor role; public pages only query published posts, preventing draft exposure.
+- News publishing uses Lovable Cloud row-level access restricted server-side to info@i2ol.org; public pages only query published posts, preventing draft exposure.
