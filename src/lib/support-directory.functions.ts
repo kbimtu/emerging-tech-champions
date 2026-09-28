@@ -16,7 +16,6 @@ export const getPublicDirectory = createServerFn({ method: "GET" })
       .order("sort_order", { ascending: true })
       .order("sort_order", { referencedTable: "directory_entries", ascending: true });
     if (error) throw error;
-
     return Promise.all((tiers ?? []).map(async (tier) => ({
       ...tier,
       directory_entries: await Promise.all((tier.directory_entries ?? []).map(async (entry) => {
