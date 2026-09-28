@@ -29,6 +29,13 @@
       "when": 1790581969130,
       "tag": "0003_extend_content_images_and_people_directories",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1790582050544,
+      "tag": "0004_align_people_directory_fields",
+      "breakpoints": true
     }
   ]
 }
