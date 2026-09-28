@@ -14,6 +14,89 @@ export type Database = {
   }
   public: {
     Tables: {
+      directory_entries: {
+        Row: {
+          created_at: string
+          created_by: string
+          id: string
+          is_published: boolean
+          logo_path: string
+          name: string
+          sort_order: number
+          tier_id: string
+          updated_at: string
+          website_url: string
+        }
+        Insert: {
+          created_at?: string
+          created_by: string
+          id?: string
+          is_published?: boolean
+          logo_path: string
+          name: string
+          sort_order?: number
+          tier_id: string
+          updated_at?: string
+          website_url?: string
+        }
+        Update: {
+          created_at?: string
+          created_by?: string
+          id?: string
+          is_published?: boolean
+          logo_path?: string
+          name?: string
+          sort_order?: number
+          tier_id?: string
+          updated_at?: string
+          website_url?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "directory_entries_tier_id_fkey"
+            columns: ["tier_id"]
+            isOneToOne: false
+            referencedRelation: "directory_tiers"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      directory_tiers: {
+        Row: {
+          created_at: string
+          created_by: string
+          id: string
+          is_published: boolean
+          page_type: string
+          sort_order: number
+          subtitle: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          created_by: string
+          id?: string
+          is_published?: boolean
+          page_type: string
+          sort_order?: number
+          subtitle?: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          created_by?: string
+          id?: string
+          is_published?: boolean
+          page_type?: string
+          sort_order?: number
+          subtitle?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       news_posts: {
         Row: {
           content: string
