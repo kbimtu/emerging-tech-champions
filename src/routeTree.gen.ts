@@ -40,6 +40,7 @@ import { Route as NewsSlugRouteImport } from './routes/news.$slug'
 import { Route as SupportIndexRouteImport } from './routes/support/index'
 import { Route as SupportContributingRouteImport } from './routes/support/contributing'
 import { Route as SupportOrganizationRouteImport } from './routes/support/organization'
+import { Route as SupportOrganizingRouteImport } from './routes/support/organizing'
 import { Route as SupportSchoolRouteImport } from './routes/support/school'
 import { Route as AuthenticatedNewsEditorRouteImport } from './routes/_authenticated/news.editor'
 
@@ -197,6 +198,11 @@ const SupportOrganizationRoute = SupportOrganizationRouteImport.update({
   path: '/support/organization',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SupportOrganizingRoute = SupportOrganizingRouteImport.update({
+  id: '/support/organizing',
+  path: '/support/organizing',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SupportSchoolRoute = SupportSchoolRouteImport.update({
   id: '/support/school',
   path: '/support/school',
@@ -236,6 +242,7 @@ export interface FileRoutesByFullPath {
   '/news/$slug': typeof NewsSlugRoute
   '/support/contributing': typeof SupportContributingRoute
   '/support/organization': typeof SupportOrganizationRoute
+  '/support/organizing': typeof SupportOrganizingRoute
   '/support/school': typeof SupportSchoolRoute
   '/compete/': typeof CompeteIndexRoute
   '/connect/': typeof ConnectIndexRoute
@@ -270,6 +277,7 @@ export interface FileRoutesByTo {
   '/news/$slug': typeof NewsSlugRoute
   '/support/contributing': typeof SupportContributingRoute
   '/support/organization': typeof SupportOrganizationRoute
+  '/support/organizing': typeof SupportOrganizingRoute
   '/support/school': typeof SupportSchoolRoute
   '/compete': typeof CompeteIndexRoute
   '/connect': typeof ConnectIndexRoute
@@ -306,6 +314,7 @@ export interface FileRoutesById {
   '/news/$slug': typeof NewsSlugRoute
   '/support/contributing': typeof SupportContributingRoute
   '/support/organization': typeof SupportOrganizationRoute
+  '/support/organizing': typeof SupportOrganizingRoute
   '/support/school': typeof SupportSchoolRoute
   '/compete/': typeof CompeteIndexRoute
   '/connect/': typeof ConnectIndexRoute
@@ -342,6 +351,7 @@ export interface FileRouteTypes {
     | '/news/$slug'
     | '/support/contributing'
     | '/support/organization'
+    | '/support/organizing'
     | '/support/school'
     | '/compete/'
     | '/connect/'
@@ -376,6 +386,7 @@ export interface FileRouteTypes {
     | '/news/$slug'
     | '/support/contributing'
     | '/support/organization'
+    | '/support/organizing'
     | '/support/school'
     | '/compete'
     | '/connect'
@@ -411,6 +422,7 @@ export interface FileRouteTypes {
     | '/news/$slug'
     | '/support/contributing'
     | '/support/organization'
+    | '/support/organizing'
     | '/support/school'
     | '/compete/'
     | '/connect/'
@@ -446,6 +458,7 @@ export interface RootRouteChildren {
   ConnectSteamRoute: typeof ConnectSteamRoute
   SupportContributingRoute: typeof SupportContributingRoute
   SupportOrganizationRoute: typeof SupportOrganizationRoute
+  SupportOrganizingRoute: typeof SupportOrganizingRoute
   SupportSchoolRoute: typeof SupportSchoolRoute
   CompeteIndexRoute: typeof CompeteIndexRoute
   ConnectIndexRoute: typeof ConnectIndexRoute
@@ -671,6 +684,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SupportOrganizationRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/support/organizing': {
+      id: '/support/organizing'
+      path: '/support/organizing'
+      fullPath: '/support/organizing'
+      preLoaderRoute: typeof SupportOrganizingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/support/school': {
       id: '/support/school'
       path: '/support/school'
@@ -737,6 +757,7 @@ const rootRouteChildren: RootRouteChildren = {
   ConnectSteamRoute: ConnectSteamRoute,
   SupportContributingRoute: SupportContributingRoute,
   SupportOrganizationRoute: SupportOrganizationRoute,
+  SupportOrganizingRoute: SupportOrganizingRoute,
   SupportSchoolRoute: SupportSchoolRoute,
   CompeteIndexRoute: CompeteIndexRoute,
   ConnectIndexRoute: ConnectIndexRoute,

@@ -18,10 +18,12 @@ export type Database = {
         Row: {
           created_at: string
           created_by: string
+          frame_shape: string
           id: string
           is_published: boolean
           logo_path: string
           name: string
+          sector: string | null
           sort_order: number
           tier_id: string
           updated_at: string
@@ -30,10 +32,12 @@ export type Database = {
         Insert: {
           created_at?: string
           created_by: string
+          frame_shape?: string
           id?: string
           is_published?: boolean
           logo_path: string
           name: string
+          sector?: string | null
           sort_order?: number
           tier_id: string
           updated_at?: string
@@ -42,10 +46,12 @@ export type Database = {
         Update: {
           created_at?: string
           created_by?: string
+          frame_shape?: string
           id?: string
           is_published?: boolean
           logo_path?: string
           name?: string
+          sector?: string | null
           sort_order?: number
           tier_id?: string
           updated_at?: string
@@ -103,6 +109,7 @@ export type Database = {
           created_at: string
           created_by: string
           id: string
+          image_path: string | null
           published_at: string | null
           slug: string
           status: string
@@ -115,6 +122,7 @@ export type Database = {
           created_at?: string
           created_by: string
           id?: string
+          image_path?: string | null
           published_at?: string | null
           slug: string
           status?: string
@@ -127,6 +135,7 @@ export type Database = {
           created_at?: string
           created_by?: string
           id?: string
+          image_path?: string | null
           published_at?: string | null
           slug?: string
           status?: string
