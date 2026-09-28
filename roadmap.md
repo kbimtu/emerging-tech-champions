@@ -24,8 +24,8 @@
 - [x] Correct white-button contrast, homepage banner spacing, country labels, and complete News editor validation
 - [x] Keep homepage actions tightly grouped on phones and tablets and restrict editor access to info@i2ol.org
 
-- [ ] Tighten homepage actions on phone and tablet widths
-- [ ] Disable account creation and set the fixed editor password
-- [ ] Add tiered directories for schools, organizations, committees, and sponsors
-- [ ] Add logo, name, link, tier, ordering, and publishing controls to the editor
+- [x] Tighten homepage actions on phone and tablet widths
+- [x] Disable account creation; requested weak password remains blocked by password safety checks
+- [x] Add tiered directories for schools, organizations, committees, and sponsors
+- [x] Add logo, name, link, tier, ordering, and publishing controls to the editor
 - [ ] Verify public directory pages and authenticated editor flow
