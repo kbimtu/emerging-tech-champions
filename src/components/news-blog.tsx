@@ -53,6 +53,7 @@ export function NewsEditor() {
   const [posts, setPosts] = useState<NewsPost[]>([]);
   const [form, setForm] = useState(emptyForm);
   const [message, setMessage] = useState("Checking editor access…");
+  const [checkingAccess, setCheckingAccess] = useState(true);
   const [allowed, setAllowed] = useState(false);
   const [saving, setSaving] = useState(false);
   const load = useCallback(async () => {
@@ -63,10 +64,11 @@ export function NewsEditor() {
   }, []);
   useEffect(() => { void (async () => {
     const { data, error } = await supabase.rpc("claim_news_editor");
-    if (error || !data) { setMessage("This editor already belongs to another account."); return; }
+    if (error || !data) { setMessage("This editor already belongs to another account."); setCheckingAccess(false); return; }
     setAllowed(true);
     setMessage("");
     await load();
+    setCheckingAccess(false);
   })(); }, [load]);
   const suggestedSlug = useMemo(() => form.title.toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""), [form.title]);
   const save = async (event: FormEvent, publish = false) => {
@@ -74,14 +76,15 @@ export function NewsEditor() {
     const title = form.title.trim();
     const summary = form.summary.trim();
     const content = form.content.trim();
-    const slug = (form.slug || suggestedSlug).replace(/^-+|-+$/g, "");
+    const slug = (form.slug || suggestedSlug).toLowerCase().trim().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
     if (!slug || title.length < 3 || summary.length < 10 || content.length < 20) { setMessage("Add a title, a summary of at least 10 characters, and an article of at least 20 characters."); return; }
     setSaving(true);
     setMessage("");
     const { data: { user } } = await supabase.auth.getUser();
     if (!user) { setMessage("Your session expired. Please sign in again."); setSaving(false); return; }
     const status: NewsPost["status"] = publish ? "published" : form.status;
-    const values = { title, slug, summary, content, status, created_by: user.id, published_at: status === "published" ? new Date().toISOString() : null };
+    const existing = posts.find((post) => post.id === form.id);
+    const values = { title, slug, summary, content, status, created_by: user.id, published_at: status === "published" ? existing?.published_at ?? new Date().toISOString() : null };
     const result = form.id
       ? await supabase.from("news_posts").update(values).eq("id", form.id)
       : await supabase.from("news_posts").insert(values);
@@ -95,6 +98,6 @@ export function NewsEditor() {
   const remove=async(id:string)=>{if(!window.confirm("Delete this article permanently?"))return;setSaving(true);const {error}=await supabase.from("news_posts").delete().eq("id",id);setSaving(false);if(error){setMessage(error.message);return;}if(form.id===id)setForm(emptyForm);setMessage("Article deleted.");await load();};
   const unpublish=async()=>{if(!form.id)return;setSaving(true);const {error}=await supabase.from("news_posts").update({status:"draft",published_at:null}).eq("id",form.id);setSaving(false);if(error){setMessage(error.message);return;}setForm(emptyForm);setMessage("Article moved to drafts.");await load();};
   const signOut=async()=>{await supabase.auth.signOut();await navigate({to:"/auth",search:{next:"/news/editor"},replace:true});};
-  if(!allowed)return <main className="editor-shell"><h1>News editor</h1><p>{message}</p><Button variant="outline" onClick={signOut}><LogOut/> Sign out</Button></main>;
-  return <main className="editor-shell"><div className="editor-heading"><div><p className="eyebrow">Private publishing</p><h1>News editor</h1></div><Button variant="outline" onClick={signOut}><LogOut/> Sign out</Button></div><div className="editor-layout"><form className="editor-form" onSubmit={(event)=>void save(event)}><div className="editor-form-heading"><h2>{form.id?"Edit article":"New article"}</h2>{form.id&&<Button type="button" variant="outline" size="sm" onClick={()=>{setForm(emptyForm);setMessage("");}}><Plus/> New</Button>}</div><label>Title<Input required minLength={3} maxLength={160} value={form.title} onChange={e=>setForm({...form,title:e.target.value})} placeholder="Article title"/></label><label>Web address<Input required={Boolean(form.slug)} value={form.slug} onChange={e=>setForm({...form,slug:e.target.value.toLowerCase().replace(/[^a-z0-9-]/g,"")})} placeholder={suggestedSlug || "article-title"}/></label><label>Summary<Textarea required minLength={10} maxLength={400} value={form.summary} onChange={e=>setForm({...form,summary:e.target.value})} placeholder="A short introduction for the News page"/></label><label>Article<Textarea required minLength={20} maxLength={50000} className="min-h-72" value={form.content} onChange={e=>setForm({...form,content:e.target.value})} placeholder="Write the article. Separate paragraphs with a blank line."/></label>{message&&<p className="editor-message" role="status">{message}</p>}<div className="flex flex-wrap gap-3"><Button disabled={saving} type="submit" variant="outline"><Save/> {saving?"Saving…":form.status==="published"?"Save changes":"Save draft"}</Button><Button disabled={saving} type="button" onClick={(event)=>void save(event,true)}>{saving?"Working…":form.status==="published"?"Update published article":"Publish now"}<ArrowUpRight/></Button>{form.id&&form.status==="published"&&<Button disabled={saving} type="button" variant="outline" onClick={()=>void unpublish()}>Unpublish</Button>}</div></form><aside className="editor-posts"><h2>Articles</h2>{posts.length===0?<p>No drafts or articles yet.</p>:posts.map(post=><article key={post.id}><span>{post.status}</span><h3>{post.title}</h3><time>{formatDate(post.published_at)}</time><div><Button disabled={saving} size="icon" variant="outline" aria-label={`Edit ${post.title}`} onClick={()=>edit(post)}><Edit3/></Button><Button disabled={saving} size="icon" variant="outline" aria-label={`Delete ${post.title}`} onClick={()=>void remove(post.id)}><Trash2/></Button></div></article>)}</aside></div></main>;
+  if(!allowed)return <main className="editor-shell"><h1>News editor</h1><p className="mt-4 text-muted-foreground" role="status">{message}</p>{!checkingAccess&&<Button className="mt-6" variant="outline" onClick={signOut}><LogOut/> Sign out</Button>}</main>;
+  return <main className="editor-shell"><div className="editor-heading"><div><p className="eyebrow">Private publishing</p><h1>News editor</h1></div><div className="flex gap-2"><Button asChild variant="outline"><Link to="/news">View News</Link></Button><Button variant="outline" onClick={signOut}><LogOut/> Sign out</Button></div></div><div className="editor-layout"><form className="editor-form" onSubmit={(event)=>void save(event)}><div className="editor-form-heading"><h2>{form.id?"Edit article":"New article"}</h2>{form.id&&<Button type="button" variant="outline" size="sm" onClick={()=>{setForm(emptyForm);setMessage("");}}><Plus/> New</Button>}</div><label>Title<Input required minLength={3} maxLength={160} value={form.title} onChange={e=>setForm({...form,title:e.target.value})} placeholder="Article title"/></label><label>Web address<Input value={form.slug} onChange={e=>setForm({...form,slug:e.target.value.toLowerCase().replace(/[^a-z0-9-]/g,"")})} placeholder={suggestedSlug || "article-title"}/><small>{form.slug || suggestedSlug ? `/news/${form.slug || suggestedSlug}` : "Created automatically from the title"}</small></label><label>Summary<Textarea required minLength={10} maxLength={400} value={form.summary} onChange={e=>setForm({...form,summary:e.target.value})} placeholder="A short introduction for the News page"/><small>{form.summary.length}/400</small></label><label>Article<Textarea required minLength={20} maxLength={50000} className="min-h-72" value={form.content} onChange={e=>setForm({...form,content:e.target.value})} placeholder="Write the article. Separate paragraphs with a blank line."/><small>{form.content.length}/50,000</small></label>{message&&<p className="editor-message" role="status">{message}</p>}<div className="flex flex-wrap gap-3"><Button disabled={saving} type="submit" variant="outline"><Save/> {saving?"Saving…":form.status==="published"?"Save changes":"Save draft"}</Button><Button disabled={saving} type="button" onClick={(event)=>void save(event,true)}>{saving?"Working…":form.status==="published"?"Update published article":"Publish now"}<ArrowUpRight/></Button>{form.id&&form.status==="published"&&<Button disabled={saving} type="button" variant="outline" onClick={()=>void unpublish()}>Unpublish</Button>}</div></form><aside className="editor-posts"><h2>Articles</h2>{posts.length===0?<p className="mt-4 text-sm text-muted-foreground">No drafts or articles yet.</p>:posts.map(post=><article key={post.id}><span>{post.status}</span><h3>{post.title}</h3><time>{formatDate(post.published_at)}</time><div><Button disabled={saving} size="icon" variant="outline" aria-label={`Edit ${post.title}`} title="Edit article" onClick={()=>edit(post)}><Edit3/></Button>{post.status==="published"&&<Button asChild size="icon" variant="outline"><Link to="/news/$slug" params={{slug:post.slug}} aria-label={`View ${post.title}`} title="View published article"><ArrowUpRight/></Link></Button>}<Button disabled={saving} size="icon" variant="outline" aria-label={`Delete ${post.title}`} title="Delete article" onClick={()=>void remove(post.id)}><Trash2/></Button></div></article>)}</aside></div></main>;
 }

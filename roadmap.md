@@ -21,4 +21,4 @@
 - [x] Move the full About block to the bottom of the homepage and remove the umbrella chain line
 - [x] Update the footer copyright wording
 - [x] Add a public News blog with a private draft-and-publish editor
-- [ ] Correct white-button contrast, homepage banner spacing, country labels, and complete News editor validation
+- [x] Correct white-button contrast, homepage banner spacing, country labels, and complete News editor validation
