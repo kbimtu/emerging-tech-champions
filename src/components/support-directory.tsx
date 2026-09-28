@@ -3,7 +3,7 @@ import { useServerFn } from "@tanstack/react-start";
 import { ExternalLink } from "lucide-react";
 import { getPublicDirectory } from "@/lib/support-directory.functions";
 
-export type DirectoryPage = "school" | "organization" | "committee" | "sponsor";
+export type DirectoryPage = "school" | "organization" | "committee" | "sponsor" | "organizing";
 type DirectoryTier = Awaited<ReturnType<typeof getPublicDirectory>>[number];
 
 export function SupportDirectory({ pageType }: { pageType: DirectoryPage }) {

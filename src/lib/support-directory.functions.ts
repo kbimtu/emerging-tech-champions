@@ -3,7 +3,7 @@ import { createClient } from "@supabase/supabase-js";
 import { z } from "zod";
 import type { Database } from "@/integrations/supabase/types";
 
-const pageTypeSchema = z.enum(["school", "organization", "committee", "sponsor"]);
+const pageTypeSchema = z.enum(["school", "organization", "committee", "sponsor", "organizing"]);
 
 export const getPublicDirectory = createServerFn({ method: "GET" })
   .inputValidator((data) => z.object({ pageType: pageTypeSchema }).parse(data))

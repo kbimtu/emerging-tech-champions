@@ -29,7 +29,7 @@ const groups = [
   },
   {
     label: "Support", href: "/support",
-    items: [["Supporting schools", "/support/school"], ["Supporting organizations", "/support/organization"], ["Regional committees", "/support/contributing"], ["Donation", "/donate"], ["Sponsorship", "/sponsor"]],
+    items: [["Supporting schools", "/support/school"], ["Supporting organizations", "/support/organization"], ["Regional committees", "/support/contributing"], ["Organizing committee", "/support/organizing"], ["Donation", "/donate"], ["Sponsorship", "/sponsor"]],
   },
   { label: "Media", href: "/media" },
   { label: "Journal", href: "/journal" },
