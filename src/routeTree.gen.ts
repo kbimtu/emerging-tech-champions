@@ -19,7 +19,6 @@ import { Route as JournalRouteImport } from './routes/journal'
 import { Route as MediaRouteImport } from './routes/media'
 import { Route as NewsRouteImport } from './routes/news'
 import { Route as PrivacyRouteImport } from './routes/privacy'
-import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as SponsorRouteImport } from './routes/sponsor'
 import { Route as CompeteIndexRouteImport } from './routes/compete/index'
 import { Route as CompeteAccoladesRouteImport } from './routes/compete/accolades'
@@ -91,11 +90,6 @@ const NewsRoute = NewsRouteImport.update({
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ResetPasswordRoute = ResetPasswordRouteImport.update({
-  id: '/reset-password',
-  path: '/reset-password',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SponsorRoute = SponsorRouteImport.update({
@@ -224,7 +218,6 @@ export interface FileRoutesByFullPath {
   '/media': typeof MediaRoute
   '/news': typeof NewsRouteWithChildren
   '/privacy': typeof PrivacyRoute
-  '/reset-password': typeof ResetPasswordRoute
   '/sponsor': typeof SponsorRoute
   '/compete/accolades': typeof CompeteAccoladesRoute
   '/compete/adjudication': typeof CompeteAdjudicationRoute
@@ -259,7 +252,6 @@ export interface FileRoutesByTo {
   '/media': typeof MediaRoute
   '/news': typeof NewsRouteWithChildren
   '/privacy': typeof PrivacyRoute
-  '/reset-password': typeof ResetPasswordRoute
   '/sponsor': typeof SponsorRoute
   '/compete/accolades': typeof CompeteAccoladesRoute
   '/compete/adjudication': typeof CompeteAdjudicationRoute
@@ -296,7 +288,6 @@ export interface FileRoutesById {
   '/media': typeof MediaRoute
   '/news': typeof NewsRouteWithChildren
   '/privacy': typeof PrivacyRoute
-  '/reset-password': typeof ResetPasswordRoute
   '/sponsor': typeof SponsorRoute
   '/compete/accolades': typeof CompeteAccoladesRoute
   '/compete/adjudication': typeof CompeteAdjudicationRoute
@@ -333,7 +324,6 @@ export interface FileRouteTypes {
     | '/media'
     | '/news'
     | '/privacy'
-    | '/reset-password'
     | '/sponsor'
     | '/compete/accolades'
     | '/compete/adjudication'
@@ -368,7 +358,6 @@ export interface FileRouteTypes {
     | '/media'
     | '/news'
     | '/privacy'
-    | '/reset-password'
     | '/sponsor'
     | '/compete/accolades'
     | '/compete/adjudication'
@@ -404,7 +393,6 @@ export interface FileRouteTypes {
     | '/media'
     | '/news'
     | '/privacy'
-    | '/reset-password'
     | '/sponsor'
     | '/compete/accolades'
     | '/compete/adjudication'
@@ -441,7 +429,6 @@ export interface RootRouteChildren {
   MediaRoute: typeof MediaRoute
   NewsRoute: typeof NewsRouteWithChildren
   PrivacyRoute: typeof PrivacyRoute
-  ResetPasswordRoute: typeof ResetPasswordRoute
   SponsorRoute: typeof SponsorRoute
   CompeteAccoladesRoute: typeof CompeteAccoladesRoute
   CompeteAdjudicationRoute: typeof CompeteAdjudicationRoute
@@ -535,13 +522,6 @@ declare module '@tanstack/react-router' {
       path: '/privacy'
       fullPath: '/privacy'
       preLoaderRoute: typeof PrivacyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/reset-password': {
-      id: '/reset-password'
-      path: '/reset-password'
-      fullPath: '/reset-password'
-      preLoaderRoute: typeof ResetPasswordRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sponsor': {
@@ -740,7 +720,6 @@ const rootRouteChildren: RootRouteChildren = {
   MediaRoute: MediaRoute,
   NewsRoute: NewsRouteWithChildren,
   PrivacyRoute: PrivacyRoute,
-  ResetPasswordRoute: ResetPasswordRoute,
   SponsorRoute: SponsorRoute,
   CompeteAccoladesRoute: CompeteAccoladesRoute,
   CompeteAdjudicationRoute: CompeteAdjudicationRoute,
