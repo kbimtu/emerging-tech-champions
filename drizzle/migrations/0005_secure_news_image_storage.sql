@@ -1,0 +1,4 @@
+CREATE POLICY "Public reads news images" ON storage.objects FOR SELECT TO anon, authenticated USING (bucket_id = 'news-images');
+CREATE POLICY "Editors upload news images" ON storage.objects FOR INSERT TO authenticated WITH CHECK (bucket_id = 'news-images' AND public.has_role(auth.uid(), 'editor'));
+CREATE POLICY "Editors update news images" ON storage.objects FOR UPDATE TO authenticated USING (bucket_id = 'news-images' AND public.has_role(auth.uid(), 'editor')) WITH CHECK (bucket_id = 'news-images' AND public.has_role(auth.uid(), 'editor'));
+CREATE POLICY "Editors delete news images" ON storage.objects FOR DELETE TO authenticated USING (bucket_id = 'news-images' AND public.has_role(auth.uid(), 'editor'));
