@@ -10,19 +10,12 @@ export function SupportDirectory({ pageType }: { pageType: DirectoryPage }) {
   const getDirectory = useServerFn(getPublicDirectory);
   const [tiers, setTiers] = useState<DirectoryTier[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
   
-  useEffect(() => {
-    setLoading(true);
-    setError(false);
-    void getDirectory({ data: { pageType } })
-      .then(setTiers)
-      .catch(() => setError(true))
-      .finally(() => setLoading(false));
+  useEffect(() => { 
+    void getDirectory({ data: { pageType } }).then(setTiers).finally(() => setLoading(false)); 
   }, [getDirectory, pageType]);
 
   if (loading) return <p className="directory-status">Loading directory…</p>;
-  if (error) return <p className="directory-status" role="alert">Directory entries are temporarily unavailable.</p>;
   if (tiers.length === 0) return null;
 
   const isPeoplePage = ["steam", "shape", "adjudicator", "organizer"].includes(pageType);

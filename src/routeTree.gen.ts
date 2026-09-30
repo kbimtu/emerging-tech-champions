@@ -36,7 +36,6 @@ import { Route as ConnectJudgeRouteImport } from './routes/connect/judge'
 import { Route as ConnectLessonsRouteImport } from './routes/connect/lessons'
 import { Route as ConnectShapeRouteImport } from './routes/connect/shape'
 import { Route as ConnectSteamRouteImport } from './routes/connect/steam'
-import { Route as NewsIndexRouteImport } from './routes/news.index'
 import { Route as NewsSlugRouteImport } from './routes/news.$slug'
 import { Route as SupportIndexRouteImport } from './routes/support/index'
 import { Route as SupportContributingRouteImport } from './routes/support/contributing'
@@ -179,11 +178,6 @@ const ConnectSteamRoute = ConnectSteamRouteImport.update({
   path: '/connect/steam',
   getParentRoute: () => rootRouteImport,
 } as any)
-const NewsIndexRoute = NewsIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => NewsRoute,
-} as any)
 const NewsSlugRoute = NewsSlugRouteImport.update({
   id: '/$slug',
   path: '/$slug',
@@ -252,7 +246,6 @@ export interface FileRoutesByFullPath {
   '/support/school': typeof SupportSchoolRoute
   '/compete/': typeof CompeteIndexRoute
   '/connect/': typeof ConnectIndexRoute
-  '/news/': typeof NewsIndexRoute
   '/support/': typeof SupportIndexRoute
   '/news/editor': typeof AuthenticatedNewsEditorRoute
 }
@@ -264,6 +257,7 @@ export interface FileRoutesByTo {
   '/eto': typeof EtoRoute
   '/journal': typeof JournalRoute
   '/media': typeof MediaRoute
+  '/news': typeof NewsRouteWithChildren
   '/privacy': typeof PrivacyRoute
   '/sponsor': typeof SponsorRoute
   '/compete/accolades': typeof CompeteAccoladesRoute
@@ -287,7 +281,6 @@ export interface FileRoutesByTo {
   '/support/school': typeof SupportSchoolRoute
   '/compete': typeof CompeteIndexRoute
   '/connect': typeof ConnectIndexRoute
-  '/news': typeof NewsIndexRoute
   '/support': typeof SupportIndexRoute
   '/news/editor': typeof AuthenticatedNewsEditorRoute
 }
@@ -325,7 +318,6 @@ export interface FileRoutesById {
   '/support/school': typeof SupportSchoolRoute
   '/compete/': typeof CompeteIndexRoute
   '/connect/': typeof ConnectIndexRoute
-  '/news/': typeof NewsIndexRoute
   '/support/': typeof SupportIndexRoute
   '/_authenticated/news/editor': typeof AuthenticatedNewsEditorRoute
 }
@@ -363,7 +355,6 @@ export interface FileRouteTypes {
     | '/support/school'
     | '/compete/'
     | '/connect/'
-    | '/news/'
     | '/support/'
     | '/news/editor'
   fileRoutesByTo: FileRoutesByTo
@@ -375,6 +366,7 @@ export interface FileRouteTypes {
     | '/eto'
     | '/journal'
     | '/media'
+    | '/news'
     | '/privacy'
     | '/sponsor'
     | '/compete/accolades'
@@ -398,7 +390,6 @@ export interface FileRouteTypes {
     | '/support/school'
     | '/compete'
     | '/connect'
-    | '/news'
     | '/support'
     | '/news/editor'
   id:
@@ -435,7 +426,6 @@ export interface FileRouteTypes {
     | '/support/school'
     | '/compete/'
     | '/connect/'
-    | '/news/'
     | '/support/'
     | '/_authenticated/news/editor'
   fileRoutesById: FileRoutesById
@@ -666,13 +656,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ConnectSteamRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/news/': {
-      id: '/news/'
-      path: '/'
-      fullPath: '/news/'
-      preLoaderRoute: typeof NewsIndexRouteImport
-      parentRoute: typeof NewsRoute
-    }
     '/news/$slug': {
       id: '/news/$slug'
       path: '/$slug'
@@ -738,12 +721,10 @@ const AuthenticatedRouteRouteWithChildren =
 
 interface NewsRouteChildren {
   NewsSlugRoute: typeof NewsSlugRoute
-  NewsIndexRoute: typeof NewsIndexRoute
 }
 
 const NewsRouteChildren: NewsRouteChildren = {
   NewsSlugRoute: NewsSlugRoute,
-  NewsIndexRoute: NewsIndexRoute,
 }
 
 const NewsRouteWithChildren = NewsRoute._addFileChildren(NewsRouteChildren)
