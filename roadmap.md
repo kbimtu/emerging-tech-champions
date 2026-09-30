@@ -40,3 +40,5 @@
 - [ ] Separate sponsorship options and add nonprofit support acknowledgement
 - [ ] Change Donation to Coming Soon
 - [ ] Verify updated public pages and authenticated editor flows
+- [x] Fix News article navigation and full-viewport article imagery
+- [x] Fix published directory tier and entry display, including Mihkel Kerem

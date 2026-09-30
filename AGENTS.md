@@ -11,3 +11,4 @@
 
 - News publishing uses Lovable Cloud row-level access restricted server-side to info@i2ol.org; public pages only query published posts, preventing draft exposure.
 - Support directories use tier and entry records shared by four public pages; private logo objects are exposed only through short-lived signed URLs.
+- Keep the News listing in an index route so dynamic article routes render independently; the parent must never swallow article pages.
