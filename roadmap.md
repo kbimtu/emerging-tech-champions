@@ -33,12 +33,12 @@
 - [x] Set the fixed editor account password securely
 - [x] Remove excess homepage banner space beneath the action buttons
 
-- [ ] Move adjudicator commitment and application timing from Adjudication to Adjudicator
-- [ ] Add article image upload and public article image display
-- [ ] Add editable people directories with photo, name, sector, and square/circle framing for STEAM, SHAPE, and Adjudicator
-- [ ] Add Organizing Committee under Sponsorships with editor-managed people
-- [ ] Separate sponsorship options and add nonprofit support acknowledgement
-- [ ] Change Donation to Coming Soon
-- [ ] Verify updated public pages and authenticated editor flows
+- [x] Move adjudicator commitment and application timing from Adjudication to Adjudicator
+- [x] Add article image upload and public article image display
+- [x] Add editable people directories with photo, name, sector, and square/circle framing for STEAM, SHAPE, and Adjudicator
+- [x] Add Organizing Committee under Sponsorships with editor-managed people
+- [x] Separate sponsorship options and add nonprofit support acknowledgement
+- [x] Change Donation to Coming Soon
+- [x] Verify updated public pages and authenticated editor flows
 - [x] Fix News article navigation and full-viewport article imagery
 - [x] Fix published directory tier and entry display, including Mihkel Kerem
