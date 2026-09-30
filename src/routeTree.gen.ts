@@ -17,6 +17,7 @@ import { Route as DonateRouteImport } from './routes/donate'
 import { Route as EtoRouteImport } from './routes/eto'
 import { Route as JournalRouteImport } from './routes/journal'
 import { Route as MediaRouteImport } from './routes/media'
+import { Route as NewsRouteImport } from './routes/news'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as SponsorRouteImport } from './routes/sponsor'
 import { Route as CompeteIndexRouteImport } from './routes/compete/index'
@@ -81,6 +82,11 @@ const JournalRoute = JournalRouteImport.update({
 const MediaRoute = MediaRouteImport.update({
   id: '/media',
   path: '/media',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NewsRoute = NewsRouteImport.update({
+  id: '/news',
+  path: '/news',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivacyRoute = PrivacyRouteImport.update({
@@ -174,14 +180,14 @@ const ConnectSteamRoute = ConnectSteamRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any)
 const NewsIndexRoute = NewsIndexRouteImport.update({
-  id: '/news/',
-  path: '/news/',
-  getParentRoute: () => rootRouteImport,
+  id: '/',
+  path: '/',
+  getParentRoute: () => NewsRoute,
 } as any)
 const NewsSlugRoute = NewsSlugRouteImport.update({
-  id: '/news/$slug',
-  path: '/news/$slug',
-  getParentRoute: () => rootRouteImport,
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => NewsRoute,
 } as any)
 const SupportIndexRoute = SupportIndexRouteImport.update({
   id: '/support/',
@@ -222,6 +228,7 @@ export interface FileRoutesByFullPath {
   '/eto': typeof EtoRoute
   '/journal': typeof JournalRoute
   '/media': typeof MediaRoute
+  '/news': typeof NewsRouteWithChildren
   '/privacy': typeof PrivacyRoute
   '/sponsor': typeof SponsorRoute
   '/compete/accolades': typeof CompeteAccoladesRoute
@@ -294,6 +301,7 @@ export interface FileRoutesById {
   '/eto': typeof EtoRoute
   '/journal': typeof JournalRoute
   '/media': typeof MediaRoute
+  '/news': typeof NewsRouteWithChildren
   '/privacy': typeof PrivacyRoute
   '/sponsor': typeof SponsorRoute
   '/compete/accolades': typeof CompeteAccoladesRoute
@@ -331,6 +339,7 @@ export interface FileRouteTypes {
     | '/eto'
     | '/journal'
     | '/media'
+    | '/news'
     | '/privacy'
     | '/sponsor'
     | '/compete/accolades'
@@ -402,6 +411,7 @@ export interface FileRouteTypes {
     | '/eto'
     | '/journal'
     | '/media'
+    | '/news'
     | '/privacy'
     | '/sponsor'
     | '/compete/accolades'
@@ -439,6 +449,7 @@ export interface RootRouteChildren {
   EtoRoute: typeof EtoRoute
   JournalRoute: typeof JournalRoute
   MediaRoute: typeof MediaRoute
+  NewsRoute: typeof NewsRouteWithChildren
   PrivacyRoute: typeof PrivacyRoute
   SponsorRoute: typeof SponsorRoute
   CompeteAccoladesRoute: typeof CompeteAccoladesRoute
@@ -455,14 +466,12 @@ export interface RootRouteChildren {
   ConnectLessonsRoute: typeof ConnectLessonsRoute
   ConnectShapeRoute: typeof ConnectShapeRoute
   ConnectSteamRoute: typeof ConnectSteamRoute
-  NewsSlugRoute: typeof NewsSlugRoute
   SupportContributingRoute: typeof SupportContributingRoute
   SupportOrganizationRoute: typeof SupportOrganizationRoute
   SupportOrganizingRoute: typeof SupportOrganizingRoute
   SupportSchoolRoute: typeof SupportSchoolRoute
   CompeteIndexRoute: typeof CompeteIndexRoute
   ConnectIndexRoute: typeof ConnectIndexRoute
-  NewsIndexRoute: typeof NewsIndexRoute
   SupportIndexRoute: typeof SupportIndexRoute
 }
 
@@ -522,6 +531,13 @@ declare module '@tanstack/react-router' {
       path: '/media'
       fullPath: '/media'
       preLoaderRoute: typeof MediaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/news': {
+      id: '/news'
+      path: '/news'
+      fullPath: '/news'
+      preLoaderRoute: typeof NewsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privacy': {
@@ -652,17 +668,17 @@ declare module '@tanstack/react-router' {
     }
     '/news/': {
       id: '/news/'
-      path: '/news'
+      path: '/'
       fullPath: '/news/'
       preLoaderRoute: typeof NewsIndexRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof NewsRoute
     }
     '/news/$slug': {
       id: '/news/$slug'
-      path: '/news/$slug'
+      path: '/$slug'
       fullPath: '/news/$slug'
       preLoaderRoute: typeof NewsSlugRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof NewsRoute
     }
     '/support/': {
       id: '/support/'
@@ -720,6 +736,18 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
 const AuthenticatedRouteRouteWithChildren =
   AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
 
+interface NewsRouteChildren {
+  NewsSlugRoute: typeof NewsSlugRoute
+  NewsIndexRoute: typeof NewsIndexRoute
+}
+
+const NewsRouteChildren: NewsRouteChildren = {
+  NewsSlugRoute: NewsSlugRoute,
+  NewsIndexRoute: NewsIndexRoute,
+}
+
+const NewsRouteWithChildren = NewsRoute._addFileChildren(NewsRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
@@ -729,6 +757,7 @@ const rootRouteChildren: RootRouteChildren = {
   EtoRoute: EtoRoute,
   JournalRoute: JournalRoute,
   MediaRoute: MediaRoute,
+  NewsRoute: NewsRouteWithChildren,
   PrivacyRoute: PrivacyRoute,
   SponsorRoute: SponsorRoute,
   CompeteAccoladesRoute: CompeteAccoladesRoute,
@@ -745,14 +774,12 @@ const rootRouteChildren: RootRouteChildren = {
   ConnectLessonsRoute: ConnectLessonsRoute,
   ConnectShapeRoute: ConnectShapeRoute,
   ConnectSteamRoute: ConnectSteamRoute,
-  NewsSlugRoute: NewsSlugRoute,
   SupportContributingRoute: SupportContributingRoute,
   SupportOrganizationRoute: SupportOrganizationRoute,
   SupportOrganizingRoute: SupportOrganizingRoute,
   SupportSchoolRoute: SupportSchoolRoute,
   CompeteIndexRoute: CompeteIndexRoute,
   ConnectIndexRoute: ConnectIndexRoute,
-  NewsIndexRoute: NewsIndexRoute,
   SupportIndexRoute: SupportIndexRoute,
 }
 export const routeTree = rootRouteImport
