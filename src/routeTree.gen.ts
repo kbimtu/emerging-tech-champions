@@ -179,9 +179,9 @@ const NewsIndexRoute = NewsIndexRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any)
 const NewsSlugRoute = NewsSlugRouteImport.update({
-  id: '/news/$slug',
-  path: '/news/$slug',
-  getParentRoute: () => rootRouteImport,
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => NewsRoute,
 } as any)
 const SupportIndexRoute = SupportIndexRouteImport.update({
   id: '/support/',
@@ -455,7 +455,6 @@ export interface RootRouteChildren {
   ConnectLessonsRoute: typeof ConnectLessonsRoute
   ConnectShapeRoute: typeof ConnectShapeRoute
   ConnectSteamRoute: typeof ConnectSteamRoute
-  NewsSlugRoute: typeof NewsSlugRoute
   SupportContributingRoute: typeof SupportContributingRoute
   SupportOrganizationRoute: typeof SupportOrganizationRoute
   SupportOrganizingRoute: typeof SupportOrganizingRoute
@@ -659,10 +658,10 @@ declare module '@tanstack/react-router' {
     }
     '/news/$slug': {
       id: '/news/$slug'
-      path: '/news/$slug'
+      path: '/$slug'
       fullPath: '/news/$slug'
       preLoaderRoute: typeof NewsSlugRouteImport
-      parentRoute: typeof rootRouteImport
+      parentRoute: typeof NewsRoute
     }
     '/support/': {
       id: '/support/'
@@ -745,7 +744,6 @@ const rootRouteChildren: RootRouteChildren = {
   ConnectLessonsRoute: ConnectLessonsRoute,
   ConnectShapeRoute: ConnectShapeRoute,
   ConnectSteamRoute: ConnectSteamRoute,
-  NewsSlugRoute: NewsSlugRoute,
   SupportContributingRoute: SupportContributingRoute,
   SupportOrganizationRoute: SupportOrganizationRoute,
   SupportOrganizingRoute: SupportOrganizingRoute,
