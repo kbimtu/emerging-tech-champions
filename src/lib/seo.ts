@@ -1,6 +1,6 @@
 export const SITE_ORIGIN = "https://www.i2ol.org";
-export const HOME_TITLE = "i2OL 2026 | International Olympiad in Emerging Technologies";
-export const HOME_DESCRIPTION = "Practical problem-solving competitions themed around emerging technologies. Submissions are open on a rolling basis. Discover rules, tracks, and entry guidelines.";
+export const HOME_TITLE = "i2OL | International Olympiad in Emerging Technologies";
+export const HOME_DESCRIPTION = "Practical problem-solving competitions themed around emerging technologies. Submissions are open on a rolling basis.";
 
 export const navigationItems = [
   ["About", "/about"], ["Competitions", "/compete"], ["ETO", "/eto"],

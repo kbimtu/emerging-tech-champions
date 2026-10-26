@@ -1,5 +1,9 @@
 # i2OL 2026 website roadmap
 
+- [x] Verify all eight public directory sections, show empty/error states, and reduce profile-photo size
+- [x] Apply exact homepage OG wording and provide head code and cache guidance
+- [ ] Populate public directories with real tiers and profiles (no records currently exist in the connected project; requires user content)
+
 - [x] Apply uploaded SEO brief: metadata, canonical URLs, navigation schema, headings, and CTA audit
 - [x] Verify rendered search tags and provide copy-ready snippets and deployment guidance
 - [ ] Connect and publish at www.i2ol.org so the requested live preview-image URL becomes available (requires domain setup/publication)

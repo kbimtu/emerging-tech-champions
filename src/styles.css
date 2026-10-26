@@ -320,6 +320,9 @@ footer a { display:block; margin:.4rem 0; font-size:.85rem; }
 .editor-posts time { display:block; color:var(--muted-foreground); font-size:.75rem; }
 .editor-posts article div { display:flex; gap:.5rem; margin-top:1rem; }
 .support-directory { margin-top:3rem; }
+.directory-empty { padding:1rem 0; border-top:1px solid var(--border); }
+.directory-empty h3 { font-family:var(--font-display); font-size:1.5rem; font-weight:800; }
+.directory-empty p { margin-top:.5rem; color:var(--muted-foreground); }
 .directory-tier { margin-top:2.75rem; }
 .directory-tier>header { padding-bottom:.8rem; border-bottom:1px solid var(--border); }
 .directory-tier h3 { font-family:var(--font-display); font-size:1.8rem; font-weight:800; }
@@ -347,27 +350,31 @@ footer a { display:block; margin:.4rem 0; font-size:.85rem; }
 
 /* Directory Extensions */
 .support-directory.is-people .directory-grid {
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr));
+  gap: 1.5rem;
 }
 
 .support-directory.is-people .directory-entry {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  text-align: center;
+  text-align: left;
   min-height: auto;
   padding: 0;
   border: 0;
 }
 
 .directory-image-wrap {
-  width: 100%;
+  width: 80px;
+  flex: 0 0 80px;
   aspect-ratio: 1;
   overflow: hidden;
   background: var(--muted);
   border: 1px solid var(--border);
+  display: grid;
+  place-items: center;
 }
+.directory-image-wrap > svg { width:1.5rem; height:1.5rem; color:var(--muted-foreground); }
 
 .directory-image-wrap.is-circle {
   border-radius: 9999px;
@@ -380,6 +387,8 @@ footer a { display:block; margin:.4rem 0; font-size:.85rem; }
 }
 
 .support-directory:not(.is-people) .directory-image-wrap {
+  width: 100%;
+  grid-column: 1 / -1;
   background: transparent;
   border: 0;
   aspect-ratio: auto;
@@ -392,13 +401,14 @@ footer a { display:block; margin:.4rem 0; font-size:.85rem; }
 }
 
 .directory-info {
-  margin-top: 1rem;
+  min-width: 0;
+  overflow-wrap: anywhere;
   display: flex;
   flex-direction: column;
 }
 
 .directory-info strong {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 800;
 }
 
