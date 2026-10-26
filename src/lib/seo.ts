@@ -24,6 +24,39 @@ export const navigationSchema = {
   })),
 };
 
+const breadcrumbNames: Record<string, string> = {
+  about: "About", compete: "Compete", eto: "ETO", connect: "Connect", support: "Support",
+  media: "Media", journal: "Journal", news: "News", sponsor: "Sponsor", donate: "Donate",
+  privacy: "Privacy Policy", accolades: "Accolades", adjudication: "Adjudication",
+  qualifier: "Qualifier", registration: "Registration", submission: "Submission", teams: "Teams",
+  timeline: "Key Dates", alumni: "Alumni", collab: "Collaboration", committees: "Committees",
+  judge: "Become an Adjudicator", lessons: "Lessons Learned", shape: "SHAPE Committee",
+  steam: "STEAM Committee", contributing: "Regional Committees", organization: "Supporting Organizations",
+  organizing: "Organizing Committee", school: "Supporting Schools",
+};
+
+export function pageStructuredData(path: string, title: string) {
+  if (path === "/") return [
+    { "@context": "https://schema.org", "@type": "Organization", "@id": `${SITE_ORIGIN}/#organization`,
+      name: "i2OL", url: `${SITE_ORIGIN}/`, description: "International Olympiad in Emerging Technologies" },
+    { "@context": "https://schema.org", "@type": "WebSite", "@id": `${SITE_ORIGIN}/#website`,
+      name: "i2OL", url: `${SITE_ORIGIN}/`, publisher: { "@id": `${SITE_ORIGIN}/#organization` } },
+  ];
+  const segments = path.split("/").filter(Boolean);
+  return [{
+    "@context": "https://schema.org", "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_ORIGIN}/` },
+      ...segments.map((segment, index) => ({
+        "@type": "ListItem", position: index + 2,
+        name: segments[0] === "news" && index > 0 ? title.replace(/ \| i2OL News$/, "")
+          : breadcrumbNames[segment] ?? decodeURIComponent(segment),
+        item: `${SITE_ORIGIN}/${segments.slice(0, index + 1).join("/")}`,
+      })),
+    ],
+  }];
+}
+
 export function pageHead({ path, title, description, type = "website", image, noindex = false }: {
   path: string; title: string; description: string; type?: "website" | "article";
   image?: { url: string; width: number; height: number; mimeType?: string; alt?: string }; noindex?: boolean;
@@ -58,6 +91,8 @@ export function pageHead({ path, title, description, type = "website", image, no
       ...(noindex ? [{ name: "robots", content: "noindex, nofollow" }] : []),
     ],
     links: [{ rel: "canonical", href: url }],
-    scripts: noindex ? [] : [{ type: "application/ld+json", children: JSON.stringify(navigationSchema) }],
+    scripts: noindex ? [] : [navigationSchema, ...pageStructuredData(path, title)].map(schema => ({
+      type: "application/ld+json", children: JSON.stringify(schema).replace(/</g, "\\u003c"),
+    })),
   };
 }
