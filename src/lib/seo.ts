@@ -1,6 +1,7 @@
 export const SITE_ORIGIN = "https://www.i2ol.org";
 export const HOME_TITLE = "i2OL | International Olympiad in Emerging Technologies";
 export const HOME_DESCRIPTION = "Practical problem-solving competitions themed around emerging technologies. Submissions are open on a rolling basis.";
+export const competitionPreview = { url: `${SITE_ORIGIN}/assets/og-image.jpg`, width: 1200, height: 630, mimeType: "image/jpeg", alt: "i2OL International Olympiad in Emerging Technologies competition logos" };
 
 export const navigationItems = [
   ["About", "/about"], ["Competitions", "/compete"], ["ETO", "/eto"],
@@ -21,9 +22,10 @@ export const navigationSchema = {
 
 export function pageHead({ path, title, description, type = "website", image, noindex = false }: {
   path: string; title: string; description: string; type?: "website" | "article";
-  image?: { url: string; width: number; height: number }; noindex?: boolean;
+  image?: { url: string; width: number; height: number; mimeType?: string; alt?: string }; noindex?: boolean;
 }) {
   const url = `${SITE_ORIGIN}${path === "/" ? "/" : path.replace(/\/$/, "")}`;
+  const preview = image ?? (noindex ? undefined : competitionPreview);
   return {
     meta: [
       { title }, { name: "description", content: description },
@@ -33,11 +35,17 @@ export function pageHead({ path, title, description, type = "website", image, no
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:url", content: url }, { name: "twitter:title", content: title },
       { name: "twitter:description", content: description },
-      ...(image ? [
-        { property: "og:image", content: image.url },
-        { property: "og:image:width", content: String(image.width) },
-        { property: "og:image:height", content: String(image.height) },
-        { name: "twitter:image", content: image.url },
+      ...(preview ? [
+        { property: "og:image", content: preview.url },
+        { property: "og:image:secure_url", content: preview.url },
+        { property: "og:image:width", content: String(preview.width) },
+        { property: "og:image:height", content: String(preview.height) },
+        ...(preview.mimeType ? [{ property: "og:image:type", content: preview.mimeType }] : []),
+        ...(preview.alt ? [
+          { property: "og:image:alt", content: preview.alt },
+          { name: "twitter:image:alt", content: preview.alt },
+        ] : []),
+        { name: "twitter:image", content: preview.url },
       ] : []),
       ...(noindex ? [{ name: "robots", content: "noindex, nofollow" }] : []),
     ],
@@ -45,5 +53,3 @@ export function pageHead({ path, title, description, type = "website", image, no
     scripts: noindex ? [] : [{ type: "application/ld+json", children: JSON.stringify(navigationSchema) }],
   };
 }
-
-export const competitionPreview = { url: `${SITE_ORIGIN}/assets/og-preview.png`, width: 1200, height: 630 };
