@@ -1,5 +1,8 @@
 # i2OL 2026 website roadmap
 
+- [x] Refresh all public header previews with wide, readable framing and verified public JPEG addresses
+- [x] Provide the complete list of public preview-enabled links
+
 - [x] Verify all eight public directory sections, show empty/error states, and reduce profile-photo size
 - [x] Apply exact homepage OG wording and provide head code and cache guidance
 - [ ] Populate public directories with real tiers and profiles (no records currently exist in the connected project; requires user content)

@@ -1,10 +1,11 @@
-import sharedPreview from "@/assets/i2ol-shared-preview.jpg.asset.json";
 import { pagePreviews } from "./page-previews";
 
 export const SITE_ORIGIN = "https://www.i2ol.org";
+// Asset serving is public even before the canonical domain is connected.
+export const PREVIEW_ASSET_ORIGIN = "https://id-preview--f37608bd-ad26-4218-b0cb-f087cd0fc1a6.lovable.app";
 export const HOME_TITLE = "i2OL | International Olympiad in Emerging Technologies";
 export const HOME_DESCRIPTION = "Practical problem-solving competitions themed around emerging technologies. Submissions are open on a rolling basis.";
-export const competitionPreview = { url: `${SITE_ORIGIN}${sharedPreview.url}`, width: 1200, height: 630, mimeType: "image/jpeg", alt: "International Olympiad in Emerging Technologies: practical problem-solving competitions and rolling submissions" };
+export const competitionPreview = { url: `${PREVIEW_ASSET_ORIGIN}${pagePreviews["/"].url}`, width: 1200, height: 630, mimeType: "image/jpeg", alt: "International Olympiad in Emerging Technologies: practical problem-solving competitions and rolling submissions" };
 
 export const navigationItems = [
   ["About", "/about"], ["Competitions", "/compete"], ["ETO", "/eto"],
@@ -30,7 +31,7 @@ export function pageHead({ path, title, description, type = "website", image, no
   const url = `${SITE_ORIGIN}${path === "/" ? "/" : path.replace(/\/$/, "")}`;
   const header = pagePreviews[path as keyof typeof pagePreviews];
   const preview = image ?? (noindex ? undefined : header ? {
-    url: `${SITE_ORIGIN}${header.url}`, width: 1200, height: 630,
+    url: `${PREVIEW_ASSET_ORIGIN}${header.url}`, width: 1200, height: 630,
     mimeType: header.content_type, alt: header.alt,
   } : competitionPreview);
   return {
