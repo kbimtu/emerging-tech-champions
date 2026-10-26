@@ -1,14 +1,8 @@
+import { pageHead } from "@/lib/seo";
 import { createFileRoute } from "@tanstack/react-router";
 import { SitePage } from "@/components/site-page";
 
 export const Route = createFileRoute("/connect/steam")({
-  head: () => ({ meta: [
-    { title: "STEAM Committee | i2OL" },
-    { name: "description", content: "Join the i2OL STEAM committee across science, technology, engineering, art, and mathematics." },
-    { property: "og:title", content: "STEAM Committee | i2OL" },
-    { property: "og:description", content: "Join the i2OL STEAM committee across science, technology, engineering, art, and mathematics." },
-    { property: "og:type", content: "website" },
-    { name: "twitter:card", content: "summary_large_image" },
-  ] }),
+  head: () => pageHead({ path: "/connect/steam", title: "STEAM Committee | i2OL", description: "Join the i2OL STEAM committee across science, technology, engineering, art, and mathematics." }),
   component: () => <SitePage page="steam" />,
 });

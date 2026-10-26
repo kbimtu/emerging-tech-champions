@@ -1,3 +1,4 @@
+import { pageHead } from "@/lib/seo";
 import { useEffect, useState, type FormEvent } from "react";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { Mail } from "lucide-react";
@@ -10,7 +11,7 @@ const EDITOR_EMAIL = "info@i2ol.org";
 export const Route = createFileRoute("/auth")({
   ssr: false,
   validateSearch: (search: Record<string, unknown>) => ({ next: typeof search["next"] === "string" && search["next"].startsWith("/") ? search["next"] : "/news/editor" }),
-  head: () => ({ meta: [{ title: "News Editor Sign In | i2OL" },{ name:"description",content:"Private sign-in for the i2OL News editor."},{property:"og:title",content:"News Editor Sign In | i2OL"},{property:"og:description",content:"Private sign-in for the i2OL News editor."},{property:"og:type",content:"website"},{name:"twitter:card",content:"summary_large_image"}] }),
+  head: () => pageHead({ path: "/auth", title: "News Editor Sign In | i2OL", description: "Private sign-in for the i2OL News editor.", noindex: true }),
   component: AuthPage,
 });
 

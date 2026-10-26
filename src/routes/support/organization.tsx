@@ -1,14 +1,8 @@
+import { pageHead } from "@/lib/seo";
 import { createFileRoute } from "@tanstack/react-router";
 import { SitePage } from "@/components/site-page";
 
 export const Route = createFileRoute("/support/organization")({
-  head: () => ({ meta: [
-    { title: "Supporting Organizations | i2OL" },
-    { name: "description", content: "Provide industry insight, resources, and mentorship to global student teams." },
-    { property: "og:title", content: "Supporting Organizations | i2OL" },
-    { property: "og:description", content: "Provide industry insight, resources, and mentorship to global student teams." },
-    { property: "og:type", content: "website" },
-    { name: "twitter:card", content: "summary_large_image" },
-  ] }),
+  head: () => pageHead({ path: "/support/organization", title: "Supporting Organizations | i2OL", description: "Provide industry insight, resources, and mentorship to global student teams." }),
   component: () => <SitePage page="organization" />,
 });
