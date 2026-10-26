@@ -1,7 +1,7 @@
 # i2OL 2026 website roadmap
 
-- [ ] Refresh all public header previews with wide, readable framing and verified public JPEG addresses
-- [ ] Provide the complete list of public preview-enabled links
+- [x] Refresh all public header previews with wide, readable framing and verified public JPEG addresses
+- [x] Provide the complete list of public preview-enabled links
 
 - [x] Verify all eight public directory sections, show empty/error states, and reduce profile-photo size
 - [x] Apply exact homepage OG wording and provide head code and cache guidance
