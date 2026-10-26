@@ -347,22 +347,23 @@ footer a { display:block; margin:.4rem 0; font-size:.85rem; }
 
 /* Directory Extensions */
 .support-directory.is-people .directory-grid {
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 220px), 1fr));
+  gap: 1.5rem;
 }
 
 .support-directory.is-people .directory-entry {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  text-align: center;
+  text-align: left;
   min-height: auto;
   padding: 0;
   border: 0;
 }
 
 .directory-image-wrap {
-  width: 100%;
+  width: 80px;
+  flex: 0 0 80px;
   aspect-ratio: 1;
   overflow: hidden;
   background: var(--muted);
@@ -380,6 +381,8 @@ footer a { display:block; margin:.4rem 0; font-size:.85rem; }
 }
 
 .support-directory:not(.is-people) .directory-image-wrap {
+  width: 100%;
+  grid-column: 1 / -1;
   background: transparent;
   border: 0;
   aspect-ratio: auto;
@@ -392,13 +395,14 @@ footer a { display:block; margin:.4rem 0; font-size:.85rem; }
 }
 
 .directory-info {
-  margin-top: 1rem;
+  min-width: 0;
+  overflow-wrap: anywhere;
   display: flex;
   flex-direction: column;
 }
 
 .directory-info strong {
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 800;
 }
 
