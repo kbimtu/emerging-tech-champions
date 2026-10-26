@@ -26,7 +26,7 @@ export const getPublishedArticle = createServerFn({ method: "GET" })
     if (post?.image_path) {
       const { data: signed } = await client.storage.from("news-images").createSignedUrl(post.image_path, 3600);
       if (signed?.signedUrl) {
-        const browserUrl = import.meta.env.VITE_SUPABASE_URL;
+        const browserUrl = import.meta.env['VITE_SUPABASE_URL'];
         imageUrl = browserUrl ? signed.signedUrl.replace(url, browserUrl) : null;
       }
     }
