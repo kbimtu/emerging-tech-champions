@@ -6,6 +6,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { DirectoryEditor } from "@/components/directory-editor";
+import { useSuspenseQuery } from "@tanstack/react-query";
+import { publishedArticleOptions } from "@/lib/news-public";
 
 type NewsPost = {
   id: string;
@@ -42,20 +44,8 @@ export function NewsFeed() {
 }
 
 export function NewsArticle({ slug }: { slug: string }) {
-  const [post, setPost] = useState<NewsPost | null | undefined>(undefined);
-  const [imageUrl, setImageUrl] = useState<string | null>(null);
-  useEffect(() => { 
-    void supabase.from("news_posts").select("id,slug,title,summary,content,status,published_at,updated_at,image_path").eq("slug", slug).eq("status", "published").maybeSingle().then(async ({ data, error }) => {
-      const p = error ? null : data as NewsPost | null;
-      setPost(p);
-      if (p?.image_path) {
-        const { data: signed } = await supabase.storage.from("news-images").createSignedUrl(p.image_path, 3600);
-        setImageUrl(signed?.signedUrl ?? null);
-      }
-    }); 
-  }, [slug]);
-  if (post === undefined) return <main className="article-shell"><p>Loading article…</p></main>;
-  if (post === null) return <main className="article-shell"><h1>Article not found</h1><Button asChild variant="outline"><Link to="/news"><ArrowLeft/> Back to News</Link></Button></main>;
+  const { data: { post, imageUrl } } = useSuspenseQuery(publishedArticleOptions(slug));
+  if (!post) return <main className="article-shell"><h1>Article Not Found</h1><Button asChild variant="outline"><Link to="/news"><ArrowLeft/> Back to News</Link></Button></main>;
   return <main><article className="news-article"><Link to="/news" className="news-back"><ArrowLeft/> News</Link><time>{formatDate(post.published_at)}</time><h1>{post.title}</h1>{imageUrl && <img src={imageUrl} alt="" className="news-article-image" />}<p className="news-summary">{post.summary}</p><div className="news-body">{post.content.split(/\n\n+/).map((paragraph,index)=><p key={index}>{paragraph}</p>)}</div></article></main>;
 }
 
