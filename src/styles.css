@@ -320,6 +320,9 @@ footer a { display:block; margin:.4rem 0; font-size:.85rem; }
 .editor-posts time { display:block; color:var(--muted-foreground); font-size:.75rem; }
 .editor-posts article div { display:flex; gap:.5rem; margin-top:1rem; }
 .support-directory { margin-top:3rem; }
+.directory-empty { padding:1rem 0; border-top:1px solid var(--border); }
+.directory-empty h3 { font-family:var(--font-display); font-size:1.5rem; font-weight:800; }
+.directory-empty p { margin-top:.5rem; color:var(--muted-foreground); }
 .directory-tier { margin-top:2.75rem; }
 .directory-tier>header { padding-bottom:.8rem; border-bottom:1px solid var(--border); }
 .directory-tier h3 { font-family:var(--font-display); font-size:1.8rem; font-weight:800; }
@@ -368,7 +371,10 @@ footer a { display:block; margin:.4rem 0; font-size:.85rem; }
   overflow: hidden;
   background: var(--muted);
   border: 1px solid var(--border);
+  display: grid;
+  place-items: center;
 }
+.directory-image-wrap > svg { width:1.5rem; height:1.5rem; color:var(--muted-foreground); }
 
 .directory-image-wrap.is-circle {
   border-radius: 9999px;
