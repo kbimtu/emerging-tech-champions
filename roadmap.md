@@ -1,5 +1,8 @@
 # i2OL 2026 website roadmap
 
+- [ ] Apply uploaded SEO brief: metadata, canonical URLs, navigation schema, headings, and CTA audit
+- [ ] Verify rendered search tags and provide copy-ready snippets and deployment guidance
+
 - [x] Build shared visual system, navigation, footer, and reusable page sections
 - [x] Build homepage and core About/Compete pages
 - [x] Build registration, submission, adjudication, timeline, teams, accolades, qualifier
