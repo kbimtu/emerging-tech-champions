@@ -2,7 +2,7 @@ import { describe, test } from "node:test";
 import assert from "node:assert/strict";
 import sharedPreview from "../assets/i2ol-shared-preview.jpg.asset.json";
 import { pagePreviews } from "./page-previews";
-import { competitionPreview, pageHead } from "./seo";
+import { PREVIEW_ASSET_ORIGIN, competitionPreview, pageHead } from "./seo";
 
 describe("Public sharing previews", () => {
   test("uses a 1200 by 630 image", () => {
@@ -16,13 +16,13 @@ describe("Public sharing previews", () => {
     const urls = new Set<string>();
     for (const [path, header] of Object.entries(pagePreviews)) {
       const { meta } = pageHead({ path, title: "Page", description: "Description" });
-      const url = `https://www.i2ol.org${header.url}`;
+       const url = `${PREVIEW_ASSET_ORIGIN}${header.url}`;
       assert.equal(meta.find(tag => "property" in tag && tag.property === "og:image")?.content, url);
       assert.equal(meta.find(tag => "name" in tag && tag.name === "twitter:image")?.content, url);
       assert.ok(header.size > 0 && header.size < 300_000);
       urls.add(url);
     }
-    assert.equal(urls.size, 30);
+     assert.equal(urls.size, 31);
   });
   test("private editor pages do not receive a public sharing image", () => {
     const { meta } = pageHead({ path: "/news/editor", title: "Editor", description: "Private", noindex: true });
