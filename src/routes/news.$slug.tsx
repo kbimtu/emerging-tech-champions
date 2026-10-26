@@ -4,6 +4,7 @@ import { publishedArticleOptions } from "@/lib/news-public";
 import { pageHead } from "@/lib/seo";
 
 export const Route = createFileRoute("/news/$slug")({
+  staticData: { sitemap: true },
   loader: async ({ params, context }) => {
     const article = await context.queryClient.ensureQueryData(publishedArticleOptions(params.slug));
     if (!article.post) throw notFound();

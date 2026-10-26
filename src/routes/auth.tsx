@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 const EDITOR_EMAIL = "info@i2ol.org";
 
 export const Route = createFileRoute("/auth")({
+  staticData: { sitemap: false },
   ssr: false,
   validateSearch: (search: Record<string, unknown>) => ({ next: typeof search["next"] === "string" && search["next"].startsWith("/") ? search["next"] : "/news/editor" }),
   head: () => pageHead({ path: "/auth", title: "News Editor Sign In | i2OL", description: "Private sign-in for the i2OL News editor.", noindex: true }),
