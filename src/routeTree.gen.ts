@@ -18,6 +18,7 @@ import { Route as EtoRouteImport } from './routes/eto'
 import { Route as JournalRouteImport } from './routes/journal'
 import { Route as MediaRouteImport } from './routes/media'
 import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SponsorRouteImport } from './routes/sponsor'
 import { Route as CompeteIndexRouteImport } from './routes/compete/index'
 import { Route as CompeteAccoladesRouteImport } from './routes/compete/accolades'
@@ -86,6 +87,11 @@ const MediaRoute = MediaRouteImport.update({
 const PrivacyRoute = PrivacyRouteImport.update({
   id: '/privacy',
   path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SponsorRoute = SponsorRouteImport.update({
@@ -223,6 +229,7 @@ export interface FileRoutesByFullPath {
   '/journal': typeof JournalRoute
   '/media': typeof MediaRoute
   '/privacy': typeof PrivacyRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sponsor': typeof SponsorRoute
   '/compete/accolades': typeof CompeteAccoladesRoute
   '/compete/adjudication': typeof CompeteAdjudicationRoute
@@ -258,6 +265,7 @@ export interface FileRoutesByTo {
   '/journal': typeof JournalRoute
   '/media': typeof MediaRoute
   '/privacy': typeof PrivacyRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sponsor': typeof SponsorRoute
   '/compete/accolades': typeof CompeteAccoladesRoute
   '/compete/adjudication': typeof CompeteAdjudicationRoute
@@ -295,6 +303,7 @@ export interface FileRoutesById {
   '/journal': typeof JournalRoute
   '/media': typeof MediaRoute
   '/privacy': typeof PrivacyRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sponsor': typeof SponsorRoute
   '/compete/accolades': typeof CompeteAccoladesRoute
   '/compete/adjudication': typeof CompeteAdjudicationRoute
@@ -332,6 +341,7 @@ export interface FileRouteTypes {
     | '/journal'
     | '/media'
     | '/privacy'
+    | '/sitemap.xml'
     | '/sponsor'
     | '/compete/accolades'
     | '/compete/adjudication'
@@ -367,6 +377,7 @@ export interface FileRouteTypes {
     | '/journal'
     | '/media'
     | '/privacy'
+    | '/sitemap.xml'
     | '/sponsor'
     | '/compete/accolades'
     | '/compete/adjudication'
@@ -403,6 +414,7 @@ export interface FileRouteTypes {
     | '/journal'
     | '/media'
     | '/privacy'
+    | '/sitemap.xml'
     | '/sponsor'
     | '/compete/accolades'
     | '/compete/adjudication'
@@ -440,6 +452,7 @@ export interface RootRouteChildren {
   JournalRoute: typeof JournalRoute
   MediaRoute: typeof MediaRoute
   PrivacyRoute: typeof PrivacyRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SponsorRoute: typeof SponsorRoute
   CompeteAccoladesRoute: typeof CompeteAccoladesRoute
   CompeteAdjudicationRoute: typeof CompeteAdjudicationRoute
@@ -529,6 +542,13 @@ declare module '@tanstack/react-router' {
       path: '/privacy'
       fullPath: '/privacy'
       preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sponsor': {
@@ -730,6 +750,7 @@ const rootRouteChildren: RootRouteChildren = {
   JournalRoute: JournalRoute,
   MediaRoute: MediaRoute,
   PrivacyRoute: PrivacyRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   SponsorRoute: SponsorRoute,
   CompeteAccoladesRoute: CompeteAccoladesRoute,
   CompeteAdjudicationRoute: CompeteAdjudicationRoute,
