@@ -1,4 +1,5 @@
 import sharedPreview from "@/assets/i2ol-shared-preview.jpg.asset.json";
+import { pagePreviews } from "./page-previews";
 
 export const SITE_ORIGIN = "https://www.i2ol.org";
 export const HOME_TITLE = "i2OL | International Olympiad in Emerging Technologies";
@@ -27,7 +28,11 @@ export function pageHead({ path, title, description, type = "website", image, no
   image?: { url: string; width: number; height: number; mimeType?: string; alt?: string }; noindex?: boolean;
 }) {
   const url = `${SITE_ORIGIN}${path === "/" ? "/" : path.replace(/\/$/, "")}`;
-  const preview = image ?? (noindex ? undefined : competitionPreview);
+  const header = pagePreviews[path as keyof typeof pagePreviews];
+  const preview = noindex ? image : header ? {
+    url: `${SITE_ORIGIN}${header.url}`, width: 1200, height: 630,
+    mimeType: header.content_type, alt: header.alt,
+  } : image ?? competitionPreview;
   return {
     meta: [
       { title }, { name: "description", content: description },
