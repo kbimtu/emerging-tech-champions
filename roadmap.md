@@ -1,7 +1,8 @@
 # i2OL 2026 website roadmap
 
-- [ ] Add router-derived public sitemap, robots directive, homepage identity schemas, and inner-page breadcrumbs
-- [ ] Verify sitemap coverage, draft/private exclusions, and rendered structured data
+- [x] Add router-derived public sitemap, robots directive, homepage identity schemas, and inner-page breadcrumbs
+- [x] Verify sitemap coverage, draft/private exclusions, and rendered structured data
+- [ ] Publish the search-discovery updates at www.i2ol.org (publication declined; custom domain is not connected)
 
 - [x] Refresh all public header previews with wide, readable framing and verified public JPEG addresses
 - [x] Provide the complete list of public preview-enabled links
