@@ -1,7 +1,9 @@
+import sharedPreview from "@/assets/i2ol-shared-preview.jpg.asset.json";
+
 export const SITE_ORIGIN = "https://www.i2ol.org";
 export const HOME_TITLE = "i2OL | International Olympiad in Emerging Technologies";
 export const HOME_DESCRIPTION = "Practical problem-solving competitions themed around emerging technologies. Submissions are open on a rolling basis.";
-export const competitionPreview = { url: `${SITE_ORIGIN}/assets/og-image.jpg`, width: 1200, height: 630, mimeType: "image/jpeg", alt: "i2OL International Olympiad in Emerging Technologies competition logos" };
+export const competitionPreview = { url: `${SITE_ORIGIN}${sharedPreview.url}`, width: 1200, height: 630, mimeType: "image/jpeg", alt: "International Olympiad in Emerging Technologies: practical problem-solving competitions and rolling submissions" };
 
 export const navigationItems = [
   ["About", "/about"], ["Competitions", "/compete"], ["ETO", "/eto"],
