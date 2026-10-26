@@ -1,4 +1,3 @@
-import sharedPreview from "@/assets/i2ol-shared-preview.jpg.asset.json";
 import { pagePreviews } from "./page-previews";
 
 export const SITE_ORIGIN = "https://www.i2ol.org";
