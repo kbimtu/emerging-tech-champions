@@ -28,4 +28,12 @@ describe("Public sharing previews", () => {
     const { meta } = pageHead({ path: "/news/editor", title: "Editor", description: "Private", noindex: true });
     assert.equal(meta.some(tag => "property" in tag && tag.property === "og:image"), false);
   });
+  test("explicit verified image addresses override same-domain header paths", () => {
+    const image = { url: "https://images.example.org/home.jpg", width: 1200, height: 630, mimeType: "image/jpeg" };
+    const { meta } = pageHead({ path: "/", title: "Unchanged", description: "Unchanged", image });
+    for (const property of ["og:image", "og:image:secure_url"]) {
+      assert.equal(meta.find(tag => "property" in tag && tag.property === property)?.content, image.url);
+    }
+    assert.equal(meta.find(tag => "name" in tag && tag.name === "twitter:image")?.content, image.url);
+  });
 });

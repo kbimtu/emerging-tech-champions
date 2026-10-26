@@ -29,10 +29,10 @@ export function pageHead({ path, title, description, type = "website", image, no
 }) {
   const url = `${SITE_ORIGIN}${path === "/" ? "/" : path.replace(/\/$/, "")}`;
   const header = pagePreviews[path as keyof typeof pagePreviews];
-  const preview = noindex ? image : header ? {
+  const preview = image ?? (noindex ? undefined : header ? {
     url: `${SITE_ORIGIN}${header.url}`, width: 1200, height: 630,
     mimeType: header.content_type, alt: header.alt,
-  } : image ?? competitionPreview;
+  } : competitionPreview);
   return {
     meta: [
       { title }, { name: "description", content: description },
