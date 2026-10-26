@@ -9,6 +9,6 @@ describe("User-requested search identity", () => {
       "https://www.i2ol.org/compete/submission");
   });
   test("preserves the supplied homepage description", () => {
-    assert.equal(HOME_DESCRIPTION, "Practical problem-solving competitions themed around emerging technologies. Submissions are open on a rolling basis. Discover rules, tracks, and entry guidelines.");
+    assert.equal(HOME_DESCRIPTION, "Practical problem-solving competitions themed around emerging technologies. Submissions are open on a rolling basis.");
   });
 });
