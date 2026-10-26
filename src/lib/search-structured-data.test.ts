@@ -12,7 +12,9 @@ describe("Search discovery", () => {
       name: "i2OL", url: "https://www.i2ol.org/", description: "International Olympiad in Emerging Technologies",
     });
     assert.equal(schemas[1]?.["@type"], "WebSite");
-    assert.equal(schemas[1]?.url, "https://www.i2ol.org/");
+    const website = schemas[1];
+    assert.ok(website && "url" in website);
+    assert.equal(website.url, "https://www.i2ol.org/");
   });
   test("About breadcrumbs show Home then About without replacing navigation", () => {
     const head = pageHead({ path: "/about", title: "About i2OL", description: "About" });
@@ -24,7 +26,8 @@ describe("Search discovery", () => {
   });
   test("nested pages retain their full breadcrumb path", () => {
     const schema = pageStructuredData("/compete/submission", "Submission")[0];
-    assert.deepEqual(schema?.itemListElement?.map(item => item.name), ["Home", "Compete", "Submission"]);
+    assert.ok(schema && "itemListElement" in schema);
+    assert.deepEqual(schema.itemListElement.map(item => item.name), ["Home", "Compete", "Submission"]);
   });
   test("private noindex pages omit structured data", () => {
     assert.equal(pageHead({ path: "/news/editor", title: "Editor", description: "Private", noindex: true }).scripts.length, 0);
