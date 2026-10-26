@@ -1,14 +1,8 @@
+import { pageHead } from "@/lib/seo";
 import { createFileRoute } from "@tanstack/react-router";
 import { SitePage } from "@/components/site-page";
 
 export const Route = createFileRoute("/compete/accolades")({
-  head: () => ({ meta: [
-    { title: "Accolades | i2OL 2026" },
-    { name: "description", content: "Awards of Distinction and Merit, medals, and special i2OL recognitions." },
-    { property: "og:title", content: "Accolades | i2OL 2026" },
-    { property: "og:description", content: "Awards of Distinction and Merit, medals, and special i2OL recognitions." },
-    { property: "og:type", content: "website" },
-    { name: "twitter:card", content: "summary_large_image" },
-  ] }),
+  head: () => pageHead({ path: "/compete/accolades", title: "Accolades | i2OL 2026", description: "Awards of Distinction and Merit, medals, and special i2OL recognitions." }),
   component: () => <SitePage page="accolades" />,
 });

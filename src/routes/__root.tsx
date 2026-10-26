@@ -35,7 +35,7 @@ function NotFoundComponent() {
   );
 }
 
-function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
+function ErrorComponent({ error, reset }: { error: unknown; reset: () => void }) {
   console.error(error);
   const router = useRouter();
   useEffect(() => {
@@ -78,11 +78,8 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "i2OL 2026" },
-      { name: "description", content: "International Olympiad in Emerging Technologies" },
       { name: "author", content: "KB Institute" },
-      { property: "og:title", content: "i2OL 2026" },
-      { property: "og:description", content: "International Olympiad in Emerging Technologies" },
+      { property: "og:site_name", content: "i2OL" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],

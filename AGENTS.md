@@ -11,3 +11,5 @@
 
 - News publishing uses Lovable Cloud row-level access restricted server-side to info@i2ol.org; public pages only query published posts, preventing draft exposure.
 - Support directories use tier and entry records shared by four public pages; private logo objects are exposed only through short-lived signed URLs.
+- Public leaf routes use the shared SEO helper for self-referencing canonical URLs and social metadata; root metadata must not contain canonical or share-image tags to prevent duplicates.
+- News article loaders use an anonymous publishable client filtered to published posts for initial HTML and metadata; never use privileged credentials or expiring signed image URLs in social tags.

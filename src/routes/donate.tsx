@@ -1,14 +1,8 @@
+import { pageHead } from "@/lib/seo";
 import { createFileRoute } from "@tanstack/react-router";
 import { SitePage } from "@/components/site-page";
 
 export const Route = createFileRoute("/donate")({
-  head: () => ({ meta: [
-    { title: "Donate | i2OL" },
-    { name: "description", content: "Direct support to i2OL, IDSOL, IBCOL, IQCOL, or ETO." },
-    { property: "og:title", content: "Donate | i2OL" },
-    { property: "og:description", content: "Direct support to i2OL, IDSOL, IBCOL, IQCOL, or ETO." },
-    { property: "og:type", content: "website" },
-    { name: "twitter:card", content: "summary_large_image" },
-  ] }),
+  head: () => pageHead({ path: "/donate", title: "Donation Coming Soon | i2OL", description: "The i2OL donation portal is being prepared. Please check back for future donation opportunities." }),
   component: () => <SitePage page="donate" />,
 });

@@ -1,14 +1,8 @@
+import { pageHead } from "@/lib/seo";
 import { createFileRoute } from "@tanstack/react-router";
 import { SitePage } from "@/components/site-page";
 
 export const Route = createFileRoute("/about")({
-  head: () => ({ meta: [
-    { title: "About i2OL" },
-    { name: "description", content: "The mission and global community behind the International Olympiad in Emerging Technologies." },
-    { property: "og:title", content: "About i2OL" },
-    { property: "og:description", content: "The mission and global community behind the International Olympiad in Emerging Technologies." },
-    { property: "og:type", content: "website" },
-    { name: "twitter:card", content: "summary_large_image" },
-  ] }),
+  head: () => pageHead({ path: "/about", title: "About i2OL", description: "The mission and global community behind the International Olympiad in Emerging Technologies." }),
   component: () => <SitePage page="about" />,
 });
