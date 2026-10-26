@@ -3,6 +3,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SitePage } from "@/components/site-page";
 
 export const Route = createFileRoute("/support/contributing")({
-  head: () => pageHead({ path: "/support/contributing", title: "Host a Regional Qualifier | i2OL", description: "Help expand i2OL locally as an experienced governmental or non-governmental organization." }),
+  head: () => pageHead({ path: "/support/contributing", title: "Regional Committees | i2OL", description: "Help expand i2OL locally through regional committees, qualifiers, and ETO events." }),
   component: () => <SitePage page="contributing" />,
 });
